@@ -15,7 +15,7 @@ What exactly is the difference?
 Most css frameworks provide a set of css files that make up the rules. You have to **include many things you might not need** for your custom layout and often it's not easy to change basic things like the number of columns in the grid system.
 
 With **Flaw{LESS} Css** you begin with no rules at all.
-You add every feature you need via **mixins** that the framework the provides.
+You add every feature you need via **mixins** that the framework provides.
 
 Here is an example:
 
@@ -91,6 +91,18 @@ Look at this:
 	}
 	
 This is the way you decide how your columns change in response to the screen size. See how simple that is? These rules just apply to the layout on screen sizes between 480px and 767px. And we said: "If the screen is that small, change the width of my columns so that they both span the full width." This results in an one column layout, perfect for small devices or screen sizes! 
+
+Ok that's nice but I want REAL css on my Server!
+----
+Please just add **#compress** at the end of the url in your development browser and reload the page. This will give you an textbox at the end of your page where you will find the complete css code, compressed and optimized for production. Copy this into a "normal" css file and link it in your html. You have finished your first development cycle!
+
+The first css framework with real ADDONS
+----
+The best thing about Flaw{LESS} Css Framework is it's modular system. Each core module is located in the "core" subfolder where you can find all components that make up the modules. Components are files that add small functionality to the big picture and together they form great systems like the grid. 
+
+### My First Module
+
+If you want to develop your own modules, this is really easy! Just create **first_module.less** put it into the addons folder and open the "install.less" file inside the addons folder. Add **@import "first_module.less";** at the end of the install.less file and you have successfully installed your first addon to Flaw{LESS} Css Framework!
 
 How can i use this?
 -----
