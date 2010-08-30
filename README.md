@@ -57,5 +57,37 @@ Here is the css needed to build the complete grid:
      }
 
      footer {
-        .grid_span(8);
+        .grid_span(8); /* footer has full span of 8 cols */
      }
+
+The good thing about this approach is that **you are not locked** in any rules the framework made up. You can go ahead and change the complete layout anytime, you just have to change the few arguments in the .grid_setup() call or adjust the size of elements by changing the number columns an element should span.
+
+Cutting Edge Webdesign
+----
+Maybe you have heard of all the talk about **liquid**, **elastic** and **device responsible** websites. **You know what? You can do ALL of this with Flaw{LESS} Css!**
+
+Above you already saw a **liquid** layout (width: 80%). But you can change your mind anytime! If you decide to go flexible just change the .grid_setup call to this:
+
+	.grid_setup(90em, 8, 1.5em, 740px, 960px);
+	
+or if you are rigid you can also fix your layout width to 960px and the framework does the rest for you!
+
+	.grid_setup(960px, 8, 1.5em);
+	
+### Responsive Layouts
+
+Oh yeah, this is the holy grail! All over the world there are growing css frameworks like [Less Framework 2](http://lessframework.com/) that seem to offer you flexible layout possibilities.
+
+Look at this:
+
+	@media only screen and (max-width: 767px) and (min-width: 480px) {
+	
+		article {
+			.grid_span(8); /* make the article span the full 8 columns */
+		}
+		aside {
+			.grid_span(8); /* and also the sidebar gets full width */
+		}
+	}
+	
+This is the way you decide how your columns change in response to the screen size. See how simple that is? These rules just apply to the layout on screen sizes between 480px and 767px. And we said: "If the screen is that small, change the width of my columns so that they both span the full width." This results in an one column layout, perfect for small devices or screen sizes! 
