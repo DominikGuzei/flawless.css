@@ -1,10 +1,6 @@
 Flaw{LESS} Css Framework
 =======
 
-
-----------
-
-
 About
 -----
 
@@ -12,8 +8,6 @@ Flaw{LESS} Css Framework takes a completely new approach in webdesign by providi
 at it's core but using the javascript variant [LESS.JS](http://github.com/cloudhead/less.js/) to be completely server agnostic.
 
 This means that you can take advantage of **variables**, **function calls** and **mixins** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
-
----
 
 What exactly is the difference?
 ----
