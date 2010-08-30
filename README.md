@@ -68,11 +68,11 @@ Maybe you have heard of all the talk about **liquid**, **elastic** and **device 
 
 Above you already saw a **liquid** layout (width: 80%). But you can change your mind anytime! If you decide to go flexible just change the .grid_setup call to this:
 
-	.grid_setup(**90em**, 8, 1.5em, 740px, 960px);
+	.grid_setup(90em, 8, 1.5em, 740px, 960px);
 	
 or if you are rigid you can also fix your layout width to 960px and the framework does the rest for you!
 
-	.grid_setup(**960px**, 8, 1.5em);
+	.grid_setup(960px, 8, 1.5em);
 	
 ### Responsive Layouts
 
@@ -91,3 +91,7 @@ Look at this:
 	}
 	
 This is the way you decide how your columns change in response to the screen size. See how simple that is? These rules just apply to the layout on screen sizes between 480px and 767px. And we said: "If the screen is that small, change the width of my columns so that they both span the full width." This results in an one column layout, perfect for small devices or screen sizes! 
+
+How can i use this?
+-----
+Just download the complete package here and look at the **starter.html** and **starter.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
