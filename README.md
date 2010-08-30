@@ -9,6 +9,10 @@ at it's core but using the javascript variant [LESS.JS](http://github.com/cloudh
 
 This means that you can take advantage of **variables**, **function calls**, **mixins** and **operations / calculations** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
 
+How can i use this?
+-----
+Just download the complete package here and look at the **starter.html** and **starter.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
+
 What exactly is the difference?
 ----
 
@@ -103,7 +107,3 @@ The best thing about Flaw{LESS} Css Framework is it's modular system. Each core 
 ### My First Module
 
 If you want to develop your own modules, this is really easy! Just create **first_module.less** put it into the addons folder and open the "install.less" file inside the addons folder. Add **@import "first_module.less";** at the end of the install.less file and you have successfully installed your first addon to Flaw{LESS} Css Framework!
-
-How can i use this?
------
-Just download the complete package here and look at the **starter.html** and **starter.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
