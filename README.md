@@ -4,10 +4,10 @@ Flaw{LESS} Css Framework
 About
 -----
 
-Flaw{LESS} Css Framework takes a completely new approach in webdesign by providing a truly modular system with all the power of [LESS](http://lesscss.org)
+Flaw{LESS} Css Framework takes a **completely new approach in webdesign** by providing a truly modular system with all the power of [LESS](http://lesscss.org)
 at it's core but using the javascript variant [LESS.JS](http://github.com/cloudhead/less.js/) to be completely server agnostic.
 
-This means that you can take advantage of **variables**, **function calls** and **mixins** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
+This means that you can take advantage of **variables**, **function calls**, **mixins** and **operations / calculations** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
 
 What exactly is the difference?
 ----
@@ -15,15 +15,15 @@ What exactly is the difference?
 Most css frameworks provide a set of css files that make up the rules. You have to **include many things you might not need** for your custom layout and often it's not easy to change basic things like the number of columns in the grid system.
 
 With **Flaw{LESS} Css** you begin with no rules at all.
-You add every feature you need via **mixins** that framework the provides.
+You add every feature you need via **mixins** that the framework the provides.
 
 Here is an example:
 
-    .grid_setup(80%, 8, 1.5em, center, 740px, 960px)
+    .grid_setup(80%, 8, 1.5em, center, 740px, 960px);
 
-This sets up a 8 column grid with 80% width and gaps between elements of 1.5em each. The grid will be centered and has a min-width of 740px and max-width of 960px.
+This sets up an **8 column grid** with **80% width** and **gaps of 1.5em** between columns. The grid will be **centered** and has a **min-width of 740px** and **max-width of 960px**.
 
-This was **one** "function call" that sets up the grid system exactly the way **YOU need it**. 
+All this was said in **one** "function call" that sets up the grid system exactly the way **YOU need it**. 
 
 Now lets define some markup for the grid:
 
