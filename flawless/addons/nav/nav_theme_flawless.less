@@ -1,0 +1,29 @@
+
+.nav_theme_flawless(@bg: #E3E3E3, @bgHover: #9CC9E1, @color: #000, @colorHover: #000, @radius: 5px, @gap: 0.2em) 
+{
+	.clearfix();
+
+	li {
+		display: block;
+		float: left;
+		margin-right: @gap;	
+		
+		a:link {
+			color: @color;
+			display:block;
+			padding: 0.5em 1em;
+			background-color: @bg;
+			.css3_border_radius(0, @radius, 0, 0);
+			text-decoration:none;
+		}
+		
+		a:hover {
+			color: @colorHover;
+			background-color: @bgHover;	
+		}
+		
+		a.active {
+			background-color: @bgHover;	
+		}
+	}
+}

@@ -1,0 +1,36 @@
+@type-family: "Lucida Grande", Arial, sans-serif;
+@type-head-family: Helvetica, Arial, sans-serif;
+@type-color: #666;
+@type-color-sheme: #4083C4;
+
+/**
+ * .type() MIXIN
+ *
+ * This mixin can be used on any wrapper to switch
+ * to a specific color sheme or font family on all
+ * sub elements.
+ */
+.type_theme_flawless(@family: @type-family, 
+            @head-family: @type-head-family,
+            @color: @type-color,
+            @color-sheme: @type-color-sheme) 
+{
+   
+  font-family: @family;
+  color: @color;
+  
+  h1 {
+    font-family: @head-family;
+    color: @color-sheme;
+  }
+  
+  h2 {
+    font-family: @head-family;
+    color: desaturate(@color-sheme, 30);
+  }
+  
+  h3 {
+    font-family: @head-family;
+    color: darken(@color, 20);
+  }
+}

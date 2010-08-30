@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Starter Page - Flaw{LESS} Css Framework</title>
+    <!-- This is the DEVELOPMENT stylesheet. This allows us to use the less.js framework
+    	 to generate the css code for us and use variables and mixins. When you are finished
+         with development comment this two includes or delete them completely -->
+    <link rel="stylesheet/less" type="text/css" href="starter.less" title="flawless_css" />
+	<script src="flawless/js/development.js" type="text/javascript"></script>
+    
+    <!-- This is the stylesheet we use in production. When you are ready with the
+    	 current development cycle just add #compress at the end of the url and
+         copy the compressed and optimized css into this file and uncomment it.
+         Then copy the flawless folder into the "css" folder and you are finished! -->
+         
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+    
+    <!-- Modernizr which enables HTML5 elements & feature detects -->
+    <script src="flawless/js/flawless.js"></script>
+    
+    <!-- IE9.js to add support for min-width and solve some bugs -->
+    <!--[if lt IE 7]>
+        <script src="flawless/js/flawless_ie.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- This is the wrapper element we use as grid. As you can see there is 
+	 not a single hint (css class) about the layout or design. -->
+<section id="page">
+	<header>
+    	<div class="in">
+    		<h1>Flaw{LESS} Css Framework - Starter Page</h1>
+        </div>
+    </header>
+    <nav>
+    	<ul>
+        	<li><a class="active" href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+            <li><a href="#">Link 5</a></li>
+        </ul>
+    </nav>
+    <section id="content">
+    	<!-- As you can see you can put the content in any position in the markup
+        	 The framework allows you to swap positions of columns and alot more -->
+        <article>
+            <div class="in">
+                <h2>My Article</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </article>
+        
+        <aside id="sidebar-1">
+            <div class="in">
+                <h3>First Sidebar</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </aside>
+        
+        <aside id="sidebar-2">
+            <div class="in">
+            	<h3>Second Sidebar</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </aside>
+        
+    </section>
+    <footer>
+    	<div class="in">
+        	<p>Flaw{LESS} Css Framework &copy; 2010 Dominik Guzei<p>
+    	</div>
+    </footer>
+</section>
+</body>
+</html>

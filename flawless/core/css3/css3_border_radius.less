@@ -1,0 +1,6 @@
+.css3_border_radius(@top_left: 10px, @top_right: 10px, @bottom_right: 10px, @bottom_left: 10px) {
+  -webkit-border-radius: @top_left @top_right @bottom_right @bottom_left;
+  -moz-border-radius: @top_left @top_right @bottom_right @bottom_left;
+  border-radius: @top_left @top_right @bottom_right @bottom_left;
+  behavior: e(%("url(%s/core/css3/PIE.txt.htc)", @setup_framework_path));
+}

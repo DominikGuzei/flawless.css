@@ -1,0 +1,42 @@
+.type_rhythm(@height: @grid_vertical_rhythm, @size: @grid_font_size) {
+  
+  @base: @size / 16;
+  font-size: 1% * @base * 100;
+  @factor: @height / @size;
+  @rhythm: 1em * @factor;
+
+  p {
+    font-size: 1em;
+    line-height: @rhythm;
+    margin-top: @rhythm;
+    margin-bottom: @rhythm;
+  }
+  
+  h1 {
+    font-size: @rhythm;
+    line-height: 1em;
+    margin-bottom: 1em;
+	margin-top: 1em;
+  }
+  
+  h2 {
+    font-size: @rhythm / 1.1;
+    line-height: 1.1em;
+    margin-bottom: 1.1em;
+	margin-top: 1.1em;
+  }
+  
+  h3 {
+    font-size: @rhythm / 1.2;
+    line-height: 1.2em;
+    margin-bottom: 1.2em;
+	margin-top: 1.2em;
+  }
+  
+  h4 {
+    font-size: @rhythm / 1.1;
+    line-height: 1.1em;
+    margin-bottom: 1.1em;
+	margin-top: 1.1em;
+  }
+}

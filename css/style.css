@@ -1,0 +1,45 @@
+
+@import "flawless/setup.less";
+@import "flawless/reset.less";
+@import "flawless/type.less";
+@import "flawless/grid.less";
+@import "flawless/ui.less";
+
+/* Setup defaults for Flaw{LESS} Css Framework */
+
+@base_path: "flawless";
+@base_height: 20;
+@base_size: 13;
+.meyer_reset;
+
+body {
+  .grid(80%, 24, 2em);
+  
+  .grid_append();
+  .grid_prepend();
+  .grid_pull();
+  .grid_push();
+  .grid_sink();
+  .grid_rise();
+  //.grid_equal(); -> STILL BUGGY, verträgt sich nicht mit backgrounds, shadows usw..
+  
+  .type_flow;
+  .type_theme;
+}
+
+.col.span-14 .in {
+  .linear_gradient;
+  border: 1px solid black;
+  .border_radius(10px 10px 0 0);
+  .box_shadow(20px, 20px, 10px, #999);
+  padding: 10px;
+}
+
+#sidebar {
+  min-width: 120px;
+  max-width: 150px;
+}
+
+.type_externals("http://172.16.217.1/");
+
+

@@ -1,0 +1,52 @@
+/**
+ *  .prependWidth - MIXIN
+ *  See: .prependWidth
+ *  adds the with of @number cells to the right margin
+ *  and thus moves the element to the left side
+ */
+.gridShiftLeft(@number, @width: @grid_width, @columns: @grid_columns) {
+  @tempWidth: @width;
+  @c: @columns;
+  @n: @number;
+  @w: e(`this.tempWidth.toJS().match(/\d+/)[0]`);
+  @unit: e(`this.tempWidth.toJS().match(/px|%|em|pt|ex|in|cm|mm|pc/)[0]`);
+  left: e(`((this.unit.toJS() == '%') || (this.unit.toJS() == 'em')) ? 
+                (100 / this.c.toJS() * this.n.toJS() * -1 ) + '%' 
+                : 
+                (this.w.toJS() / this.c.toJS() * this.n.toJS() * -1 +''+this.unit.toJS() )
+         `);
+}
+
+.grid_shift_left(@number) {
+  .gridShiftLeft(@number);
+  position:relative;
+}
+
+/**
+ *  .prependWidth - MIXIN
+ *  See: .prependWidth
+ *  adds the with of @number cells to the right margin
+ *  and thus moves the element to the left side
+ */
+.gridShiftRight(@number, @width: @grid_width, @columns: @grid_columns) {
+  @tempWidth: @width;
+  @c: @columns;
+  @n: @number;
+  @w: e(`this.tempWidth.toJS().match(/\d+/)[0]`);
+  @unit: e(`this.tempWidth.toJS().match(/px|%|em|pt|ex|in|cm|mm|pc/)[0]`);
+  right: e(`((this.unit.toJS() == '%') || (this.unit.toJS() == 'em')) ? 
+                (100 / this.c.toJS() * this.n.toJS() * -1) + '%' 
+                : 
+                (this.w.toJS() / this.c.toJS() * this.n.toJS() * -1 +''+this.unit.toJS() )
+         `);
+}
+
+.grid_shift_right(@number) {
+  .gridShiftRight(@number);
+  position:relative;
+}
+
+.grid_unshift() {
+	left: 0;
+	right: 0;	
+}

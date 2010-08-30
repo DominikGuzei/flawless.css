@@ -1,0 +1,131 @@
+/** 
+ *  FLAW{LESS} Css Framework 
+ *
+ *  grid.less
+ *  The grid is the core component of the FLAW{LESS} Css Framework
+ *  and provides extremely modular mixins that add specific functionality
+ *  as needed to your project. This way the core remains as slim as you
+ *  need it to, leaving all overhead aside.
+ *  
+ *  @author: Dominik Guzei
+ *  @website: wizzart.at
+ *
+ *  MIT-License: http://www.opensource.org/licenses/mit-license.php
+ */
+
+/**
+ *  .grid - MIXIN
+ *  The core function of the grid module, that builds up
+ *  the basic structure and provides you with up to 24
+ *  columns with custom gap, min-width and max-width 
+ *
+ *  it's also the setup function for all other grid
+ *  modules. So you can define most presets in one
+ *  mixin call.
+ *  
+ *  @width   - defines the width of the grid in (any css unit)
+ *  @columns - specifies the number of columns in the grid
+ *             up to 24 columns are possible. (plane number)
+ *  @gap     - The gap between elements in the grid (any css unit)
+ *  @min     - minimal width of the grid (any css unit)
+ *  @max     - maximal width of the grid (any css unit)
+ *  @align   - align the grid on left / center / right side of parent
+ */
+
+ .clearfix() {
+    display: block;
+	
+	
+ }
+
+.grid_setup(@width: @grid_width,
+      @columns: @grid_columns,
+      @gap: @grid_gap,
+      @align: @grid_align,
+      @min: @grid_min_width, 
+      @max: @grid_max_width) 
+{
+  /* mix the params into the element as variables
+   * so that other modules can take them as defaults */
+   
+  @grid_width: @width;
+  @grid_columns: @columns;
+  @grid_gap: @gap;
+  @grid_align: @align;
+  @grid_min_width: @min;
+  @grid_max_width: @max;    
+  
+  body {
+    text-align: @grid_align;
+  }
+}
+
+.grid(@width: @grid_width,
+      @columns: @grid_columns,
+      @gap: @grid_gap,
+      @align: @grid_align,
+      @min: @grid_min_width, 
+      @max: @grid_max_width) {
+
+  @grid_width: @width;
+  @grid_columns: @columns;
+  @grid_gap: @gap;
+  @grid_align: @align;
+  @grid_min_width: @min;
+  @grid_max_width: @max;
+
+  width: @grid_width;
+  min-width: @grid_min_width;
+  max-width: @grid_max_width;            
+  margin: 0 auto;
+  text-align: left;
+  
+  /* CLEARFIX MIXIN */
+  .wrap,
+  .in {
+    .clearfix;
+  }
+  
+  .clearfix;
+}
+
+.grid_left() {
+	float: left;
+}
+
+.grid_right() {
+	margin-left: -5px;
+	float: right;	
+}
+
+.grid_gap_left() {
+	> .in {
+      margin-right: 0;
+      margin-left: @grid_gap / 2;  
+  	}	
+}
+
+.grid_gap_right() {
+	> .in {
+      margin-right: @grid_gap / 2;
+      margin-left: 0;  
+  	}	
+}
+
+.grid_gap_both() {
+	> .in {
+      margin-right: @grid_gap / 2;
+      margin-left: @grid_gap / 2;  
+  	}	
+}
+
+.grid_clear() {
+	.clearfix;	
+}
+
+/* ie fixes for grid component */
+
+.ie .in {
+	word-wrap: break-word; overflow-x: hidden;
+	height: 1%;
+}

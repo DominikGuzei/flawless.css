@@ -1,0 +1,48 @@
+/**
+ *  .prependWidth - MIXIN
+ *  See: .prependWidth
+ *  adds the with of @number cells to the right margin
+ *  and thus moves the element to the left side
+ */
+.prependWidth(@number, @width: @grid_width, @columns: @grid_columns) {
+  @tempWidth: @width;
+  @c: @columns;
+  @n: @number;
+  @w: e(`this.tempWidth.toJS().match(/\d+/)[0]`);
+  @unit: e(`this.tempWidth.toJS().match(/px|%|em|pt|ex|in|cm|mm|pc/)[0]`);
+  margin-left: e(`((this.unit.toJS() == '%') || (this.unit.toJS() == 'em')) ? 
+                (100 / this.c.toJS() * this.n.toJS() ) + '%' 
+                : 
+                (this.w.toJS() / this.c.toJS() * this.n.toJS() +''+this.unit.toJS() )
+         `);
+}
+
+.grid_prepend_classes() {
+  .prepend-1 { .prependWidth( 1 ) ;}
+  .prepend-2 { .prependWidth( 2 ) ;}
+  .prepend-3 { .prependWidth( 3 ) ;}
+  .prepend-4 { .prependWidth( 4 ) ;}
+  .prepend-5 { .prependWidth( 5 ) ;}
+  .prepend-6 { .prependWidth( 6 ) ;}
+  .prepend-7 { .prependWidth( 7 ) ;}
+  .prepend-8 { .prependWidth( 8 ) ;}
+  .prepend-9 { .prependWidth( 9 ) ;}
+  .prepend-10 { .prependWidth( 10 ) ;}
+  .prepend-11 { .prependWidth( 11 ) ;}
+  .prepend-12 { .prependWidth( 12 ) ;}
+  .prepend-13 { .prependWidth( 13 ) ;}
+  .prepend-14 { .prependWidth( 14 ) ;}
+  .prepend-15 { .prependWidth( 15 ) ;}
+  .prepend-16 { .prependWidth( 16 ) ;}
+  .prepend-17 { .prependWidth( 17 ) ;}
+  .prepend-18 { .prependWidth( 18 ) ;}
+  .prepend-19 { .prependWidth( 19 ) ;}
+  .prepend-20 { .prependWidth( 20 ) ;}
+  .prepend-21 { .prependWidth( 21 ) ;}
+  .prepend-22 { .prependWidth( 22 ) ;}
+  .prepend-23 { .prependWidth( 23 ) ;}
+}
+
+.grid_prepend(@columns) {
+	.prependWidth(@columns);	
+}

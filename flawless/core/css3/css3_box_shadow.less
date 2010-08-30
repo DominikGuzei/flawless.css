@@ -1,0 +1,6 @@
+.css3_box_shadow(@x:10px, @y:10px, @blur:5px, @color: #ccc) {
+  -moz-box-shadow: @x @y @blur @color;
+  -webkit-box-shadow: @x @y @blur @color;
+  box-shadow: @x @y @blur @color;
+  behavior: e(%("url(%s/core/css3/PIE.txt.htc)", @setup_framework_path));
+}
