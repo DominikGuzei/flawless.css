@@ -60,7 +60,7 @@ Here is the css needed to build the complete grid:
         .grid_span(8); /* footer has full span of 8 cols */
      }
 
-The good thing about this approach is that **you are not locked** in any rules the framework made up. You can go ahead and change the complete layout anytime, you just have to change the few arguments in the .grid_setup() call or adjust the size of elements by changing the number columns an element should span.
+The good thing about this approach is that **you are not locked** in any rules the framework made up. You can go ahead and change the complete layout anytime, you just have to change the few arguments in the .grid_setup() call or adjust the size of elements by changing the number of columns an element should span.
 
 Cutting Edge Webdesign
 ----
@@ -68,11 +68,11 @@ Maybe you have heard of all the talk about **liquid**, **elastic** and **device 
 
 Above you already saw a **liquid** layout (width: 80%). But you can change your mind anytime! If you decide to go flexible just change the .grid_setup call to this:
 
-	.grid_setup(90em, 8, 1.5em, 740px, 960px);
+	.grid_setup(**90em**, 8, 1.5em, 740px, 960px);
 	
 or if you are rigid you can also fix your layout width to 960px and the framework does the rest for you!
 
-	.grid_setup(960px, 8, 1.5em);
+	.grid_setup(**960px**, 8, 1.5em);
 	
 ### Responsive Layouts
 
