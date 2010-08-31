@@ -11,7 +11,7 @@ This means that you can take advantage of **variables**, **function calls**, **m
 Best Features:
 -----
 
-### Realtime Watch Dog
+### View your changes without refreshing the browser!
 During development you can keep your browser window open beside your code and as you make changes and save your .less file in your coding environment - **the browser refreshes to show you the changed layout!** Thanks to Dmitry Fadeyev who pointed that out in his great [article about Less.js](http://fadeyev.net/2010/06/19/lessjs-will-obsolete-css/)
 
 ### CSS 3 like a PIE!
