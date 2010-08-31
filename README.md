@@ -140,3 +140,10 @@ The best thing about Flaw{LESS} Css Framework is it's modular system. Each core 
 ### My First Module
 
 If you want to develop your own modules, this is really easy! Just create **first_module.less** put it into the addons folder and open the "install.less" file inside the addons folder. Add **@import "first_module.less";** at the end of the install.less file and you have successfully installed your first addon to Flaw{LESS} Css Framework!
+
+If anyone is interested in collaborating: I'm planing a website similar to jquery's where people can upload their custom modules together with some explanation and advice. I think this could become THE next big movement into the direction of more pleasure in webdesign (like jQuery opened the world of JavaScript to many non techys).
+
+And of course, I'd love to see you in the team for making the framework better!
+kind regards, Dominik Guzei!
+
+Drop me a line at my blog [Wizzart](http://wizzart.at) or tweet me a msg [at Twitter](http://twitter.com/DominikGuzei)
