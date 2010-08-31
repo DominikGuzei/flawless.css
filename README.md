@@ -9,6 +9,37 @@ at it's core but using the javascript variant [LESS.JS](http://github.com/cloudh
 
 This means that you can take advantage of **variables**, **function calls**, **mixins** and **operations / calculations** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
 
+Best Features:
+-----
+
+### CSS 3 like a PIE!
+Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http://css3pie.com/) makes it possible to render **rounded corners**, **background gradients** and **drop shadows** with Internet Explorer! The great thing: You don't have to mess with the settings, it's just one "function call" like: 
+	
+	.css3_border_radius(10px, 10px, 0, 0) 
+
+### Media Queries and Responsive Layouts
+Modern Browsers and most Mobile versions understand Media Queries, so you can take advance of **responsive layouts** that change their appearance in reaction to smaller screen sizes! Things like [Less Framework 2](http://lessframework.com/) are extremely easy to achieve! (look at the starter.less for an example)
+
+### Content First, Layout on Top!
+Pure semantic html is one of the most important goals I had in mind when designing the Flaw{LESS} Css Framework, so you can completely divide markup and presentation! If you need to change the position of columns there are nice helpers like:
+
+	// first column in markup -> shift it two column to the right
+	#my-content {
+		.grid_span(4); // this is 4 columns wide
+		.grid_shift_right(2);
+	}
+	
+	// Second columns in markup -> the sidebar
+	#my-sidebar {
+		.grid_span(2); // this is 2 columns wide
+		.grid_shift_left(4); // swap position with content
+	}
+	
+This will shift the element two column to the left side. With this you can swap columns positions - just with css!
+
+### Smallest Framework Ever!
+You start with **0 kb** and just add exactly what your website need! **A basic grid is smaller than 1 KB!!**
+
 How can i use this?
 -----
 Just download the complete package here and look at the **starter.html** and **starter.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
