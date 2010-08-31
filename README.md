@@ -11,6 +11,9 @@ This means that you can take advantage of **variables**, **function calls**, **m
 Best Features:
 -----
 
+### Realtime Watch Dog
+During development you can keep your browser window open beside your code and as you make changes and save your .less file in your coding environment - **the browser refreshes to show you the changed layout!** Thanks to Dmitry Fadeyev who pointed that out in his great [article about Less.js](http://fadeyev.net/2010/06/19/lessjs-will-obsolete-css/)
+
 ### CSS 3 like a PIE!
 Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http://css3pie.com/) makes it possible to render **rounded corners**, **background gradients** and **drop shadows** with Internet Explorer! The great thing: You don't have to mess with the settings, it's just one "function call" like: 
 	
