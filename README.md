@@ -1,8 +1,5 @@
 ![Flaw{LESS} Css Framework Logo](http://wizzart.at/wp-content/uploads/flawless_css_framework.jpg)
 
-About
------
-
 Flaw{LESS} Css Framework takes a **completely new approach in webdesign** by providing a truly modular system with all the power of [LESS](http://lesscss.org)
 at it's core but using the javascript variant [LESS.JS](http://github.com/cloudhead/less.js/) to be completely server agnostic.
 
