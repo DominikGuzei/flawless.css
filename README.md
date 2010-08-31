@@ -149,4 +149,7 @@ If anyone is interested in collaborating: I'm planing a website similar to jquer
 And of course, I'd love to see you in the team for making the framework better!
 kind regards, Dominik Guzei!
 
+Contact
+----
+
 Drop me a line at my blog [Wizzart](http://wizzart.at) or tweet me a msg [at Twitter](http://twitter.com/DominikGuzei)
