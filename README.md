@@ -18,8 +18,7 @@ Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http:
 	.css3_border_radius(10px, 10px, 0, 0) 
 
 ### Html 5 like a king!
-The framework takes the best approach of many other projects like [Modernizr](http://www.modernizr.com/) and those are included!
-This way you can write html5 today in all Browsers!
+The framework uses many other great projects like [Modernizr](http://www.modernizr.com/) which are included! This way you can write html5 today in all Browsers!
 
 ### Media Queries and Responsive Layouts
 Modern Browsers and most Mobile versions understand Media Queries, so you can take advance of **responsive layouts** that change their appearance in reaction to smaller screen sizes! Things like [Less Framework 2](http://lessframework.com/) are extremely easy to achieve! (look at the starter.less for an example)
