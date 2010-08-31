@@ -1,6 +1,3 @@
-Flaw{LESS} Css Framework
-=======
-
 ![Flaw{LESS} Css Framework Logo](http://wizzart.at/wp-content/uploads/flawless_css_framework.jpg)
 
 About
