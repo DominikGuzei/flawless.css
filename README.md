@@ -15,7 +15,7 @@ Best Features:
 ### CSS 3 like a PIE!
 Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http://css3pie.com/) makes it possible to render **rounded corners**, **background gradients** and **drop shadows** with Internet Explorer! The great thing: You don't have to mess with the settings, it's just one "function call" like: 
 	
-	.css3_border_radius(10px, 10px, 0, 0) 
+	.css3_border_radius(10px, 10px, 0, 0);
 
 ### Html 5 like a king!
 The framework uses many other great projects like [Modernizr](http://www.modernizr.com/) which are included! This way you can write html5 today in all Browsers!
@@ -59,7 +59,7 @@ Here is an example:
 
     .grid_setup(80%, 8, 1.5em, center, 740px, 960px);
 
-This sets up an **8 column grid** with **80% width** and **gaps of 1.5em** between columns. The grid will be **centered** and has a **min-width of 740px** and **max-width of 960px**.
+This sets up an **8 column grid** with **80% width** and **gaps of 1.5em** between columns. The grid will be **centered** and has a **min-width of 740px** and **max-width of 960px**. This works cross browser down to IE 6 and you don't have to exhaust yourself again to find out how to make IE 6 listen for min-width or max-width. All the dirty stuff is already in the framework which provides elegant abstractions to the wilderness of css today!
 
 All this was said in **one** "function call" that sets up the grid system exactly the way **YOU need it**. 
 
