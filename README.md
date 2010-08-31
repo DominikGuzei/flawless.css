@@ -29,16 +29,16 @@ Pure semantic html is one of the most important goals I had in mind when designi
 	// first column in markup -> shift it two column to the right
 	#my-content {
 		.grid_span(4); // this is 4 columns wide
-		.grid_shift_right(2);
+		.grid_shift_right(2); // shift 2 cols -> width of sidebar
 	}
 	
 	// Second columns in markup -> the sidebar
 	#my-sidebar {
 		.grid_span(2); // this is 2 columns wide
-		.grid_shift_left(4); // swap position with content
+		.grid_shift_left(4); // swap position with content (4 cols)
 	}
 	
-This will shift the element two column to the left side. With this you can swap columns positions - just with css!
+This way you can swap column positions - just with css!
 
 ### Smallest Framework Ever!
 You start with **0 kb** and just add exactly what your website need! **A basic grid is smaller than 1 KB!!**
