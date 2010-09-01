@@ -72,7 +72,7 @@
  *  @min     - minimal width of the grid (any css unit)
  *  @max     - maximal width of the grid (any css unit)
  */
-.grid_setup(80%, 8, 1.5em, center, 0px, 1024px);
+.grid_setup(80%, 8, 2em, center, 0px, 960px);
 
 /* The body element can be used to apply the vertical rhythm
  * to your document or other type and color sheme related setups */
@@ -94,7 +94,7 @@ body {
 	/* This adds rounded corners to the page element */
 	.css3_border_radius();
 	/* add a smooth box shadow */
-	.css3_box_shadow(0, 0, 10px, #999);
+	.css3_box_shadow(5px, 5px, 10px, #999);
 	/* add contrast to the page border */
 	border: 1px solid #036;
 }
@@ -106,11 +106,14 @@ header {
 	.grid_gap_both;
 }
 
+/* set the background color variable for nav, article and sidebar 1 */
+@bgColor: #A3CED7;
+
 nav {
 	/* the navigation spans all 8 columns */
 	.grid_span(8);	
 	/* apply the default flawless navigation theme */
-	.nav_theme_flawless(#E3E3E3, #C4CDDB, #000, #000, 5px);
+	.nav_theme_flawless(#E3E3E3, @bgColor, #000, #000, 0px 5px 0px 0px);
 }
 
 /* this element is a wrapper for the equal columns used
@@ -124,6 +127,8 @@ nav {
 	.grid_col_equal_wrap();	
 }
 
+
+
 article {
 	.grid_span(4); /* the article is 4 columns wide */
 	.grid_left(); /* it floats left */
@@ -134,7 +139,7 @@ article {
 	.grid_shift_right(2); 
 	/* make this column an equal height column */
 	.grid_col_equal();
-	background-color:#C4CDDB; /* add background color */
+	background-color: @bgColor; /* add background color */
 }
 
 #sidebar-1 {
@@ -143,7 +148,7 @@ article {
 	.grid_shift_left(4); /* if we didn't shift it to the left 4 columns */
 	.grid_gap_both; /* add gaps on both sides */
 	.grid_col_equal(); /* make this column an equal height column */
-	background-color:#C4CDDB; /* add background color */
+	background-color: @bgColor; /* add background color */
 }
 
 #sidebar-2 {

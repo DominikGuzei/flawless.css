@@ -1,5 +1,5 @@
 
-.nav_theme_flawless(@bg: #E3E3E3, @bgHover: #9CC9E1, @color: #000, @colorHover: #000, @radius: 5px, @gap: 0.2em) 
+.nav_theme_flawless(@bg: #E3E3E3, @bgHover: #9CC9E1, @color: #000, @colorHover: #000, @radius: 0 5px 0 0, @gap: 0.2em) 
 {
 	.clearfix();
 
@@ -8,12 +8,12 @@
 		float: left;
 		margin-right: @gap;	
 		
-		a:link {
+		a:link, a:visited {
 			color: @color;
 			display:block;
 			padding: 0.5em 1em;
 			background-color: @bg;
-			.css3_border_radius(0, @radius, 0, 0);
+			.css3_border_radius(@radius);
 			text-decoration:none;
 		}
 		
