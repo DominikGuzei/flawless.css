@@ -32,12 +32,6 @@
  *  @align   - align the grid on left / center / right side of parent
  */
 
- .clearfix() {
-    display: block;
-	
-	
- }
-
 .grid_setup(@width: @grid_width,
       @columns: @grid_columns,
       @gap: @grid_gap,
@@ -83,10 +77,10 @@
   /* CLEARFIX MIXIN */
   .wrap,
   .in {
-    .clearfix;
+    .util_clearfix();
   }
   
-  .clearfix;
+  .util_clearfix();
 }
 
 .grid_left() {
@@ -120,7 +114,7 @@
 }
 
 .grid_clear() {
-	.clearfix;	
+	.util_clearfix();	
 }
 
 /* ie fixes for grid component */
