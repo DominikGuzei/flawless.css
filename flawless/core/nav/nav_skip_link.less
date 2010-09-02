@@ -1,0 +1,29 @@
+
+.nav_skip_link() {
+	/*
+	 * The skip navigation link will be completely hidden until a user tabs to the
+	 * link. See http://www.webaim.org/techniques/skipnav/
+	 */
+	 a, 
+	 a:visited {
+	  position: absolute;
+	  display: block;
+	  left: 0;
+	  top: -500px;
+	  width: 1px;
+	  height: 1px;
+	  overflow: hidden;
+	  text-align: center;
+	  background-color: #666;
+	  color: #fff;
+	}
+
+	a:hover,
+	a:active,
+	a:focus {
+	  position: static;
+	  width: 100%;
+	  height: auto;
+	  padding: 2px 0 3px 0;
+	}
+}

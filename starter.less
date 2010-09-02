@@ -82,6 +82,10 @@ body {
 	/* this adds the standard typography theme with custom families and colors */
 	.type_theme_flawless(@type-family, @type-head-family, #333, #036);
 }
+/* convenient skip link functionality included in the nav module */
+#skip-link {
+	.nav_skip_link();
+}
 
 /* This is the wrapper element we declare as grid */
 #page {
@@ -109,11 +113,11 @@ header {
 /* set the background color variable for nav, article and sidebar 1 */
 @bgColor: #A3CED7;
 
-nav {
+nav#main-menu {
 	/* the navigation spans all 8 columns */
 	.grid_span(8);	
 	/* apply the default flawless navigation theme */
-	.nav_theme_flawless(#E3E3E3, @bgColor, #000, #000, 0px 5px 0px 0px);
+	.nav_rounded_horizontal(#E3E3E3, @bgColor, #000, #000, 0px 5px 0px 0px);
 }
 
 /* this element is a wrapper for the equal columns used
