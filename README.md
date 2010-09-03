@@ -17,10 +17,10 @@ Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http:
 	.css3_border_radius(10px, 10px, 0, 0);
 
 ### Html 5 like a king!
-The framework uses many other great projects like [Modernizr](http://www.modernizr.com/) which are included! This way you can write html5 today in all Browsers!
+**Completely based on [Html5 Boilerplate](http://html5boilerplate.com/)** to provide the most professional starting point available for html 5 today together with other great projects like [Modernizr](http://www.modernizr.com/) which are included! This way you can write html5 today in all Browsers!
 
 ### Media Queries and Responsive Layouts
-Modern Browsers and most Mobile versions understand Media Queries, so you can take advance of **responsive layouts** that change their appearance in reaction to smaller screen sizes! Things like [Less Framework 2](http://lessframework.com/) are extremely easy to achieve! (look at the starter.less for an example)
+Modern Browsers and most Mobile versions understand Media Queries, so you can take advance of **responsive layouts** that change their appearance in reaction to smaller screen sizes! Things like [Less Framework 2](http://lessframework.com/) are extremely easy to achieve! (look at the css/style.less for an example)
 
 ### Content First, Layout on Top!
 Pure semantic html is one of the most important goals I had in mind when designing the Flaw{LESS} Css Framework, so you can completely divide markup and presentation! If you need to change the position of columns there are nice helpers like:
@@ -44,7 +44,7 @@ You start with **0 kb** and just add exactly what your website need! **A basic g
 
 How can i use this?
 -----
-Just download the complete package here and look at the **starter.html** and **starter.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
+Just download the complete package here and look at the **index.html** and **css/style.less** files. There is a lot of inline documentation to get you started. To fully understand how the framework works you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js/)
 
 What exactly is the difference?
 ----
