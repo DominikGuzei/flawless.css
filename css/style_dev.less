@@ -72,7 +72,9 @@
  *  @min     - minimal width of the grid (any css unit)
  *  @max     - maximal width of the grid (any css unit)
  */
-.grid_setup(80%, 8, 2em, center, 0px, 960px);
+
+/* setup for all browsers that don't understand media queries */
+.grid_setup(80%, 8, 2em, center, 740px, 960px);
 
 /* The body element can be used to apply the vertical rhythm
  * to your document or other type and color sheme related setups */
@@ -91,6 +93,7 @@ body {
 #page {
 	/* This mixin makes this element a grid */
 	.grid();
+	
 	margin-top: 40px; /* add a little spacing above */
 	/* Here we define a linear gradient background for the whole
 	 * grid element. You can see the effect at the second sidebar */
@@ -101,6 +104,14 @@ body {
 	.css3_box_shadow(2px, 2px, 10px, #999);
 	/* add contrast to the page border */
 	border: 1px solid #036;
+}
+
+/* override grid settings for browsers that can react to  small screen sizes */
+@media only screen and (min-width: 0px) {
+	#page {
+		/* change min-width to 0px to allow smaller sizes */
+		.grid(@grid_width, @grid_columns, @grid_gap, @grid_align, 0px, 960px);	
+	}
 }
 
 header {
