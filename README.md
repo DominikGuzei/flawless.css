@@ -8,7 +8,7 @@ This means that you can take advantage of **variables**, **function calls**, **m
 New Features:
 ----
 ### Flawless Ui Menu 
-New to version 1.2 is the jQuery interface which allows to quickly access the compressed css code, enable yui profiling from html5boilerplate and see the html 5 outline of your document with the help of [HTML 5 Outliner](http://code.google.com/p/h5o/)! You can find the menu opener at bottom left in the browser window - click the button to open the dialog!
+New to version 1.2 is the **jQuery interface** which allows to quickly access the **compressed css code**, enable **yui profiling from html5boilerplate** and see the **html 5 outline** of your document with the help of [HTML 5 Outliner](http://code.google.com/p/h5o/)! You can find the **menu opener at bottom left in the browser window** - click the button to open the dialog!
 
 ### Html 5 Outliner
 The outliner shows your current document's structur with the new html 5 algorithm to structur documents. This is important to write semantic websites! Just click on the links to highlight the various sections of your document.
