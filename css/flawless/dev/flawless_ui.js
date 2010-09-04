@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 		var $dialog = $('<div id="flawless-ui-menu"></div>')
 			.html(buildTabs())
 			.dialog({
-				autoOpen: true, // change this to true while developing new plugins
+				autoOpen: false, // change this to true while developing new plugins
 				title: 'Flaw{LESS} Menu',
 				width: 800,
 				close: dialogClosed
