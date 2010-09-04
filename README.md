@@ -5,6 +5,14 @@ at it's core but using the javascript variant [LESS.JS](http://github.com/cloudh
 
 This means that you can take advantage of **variables**, **function calls**, **mixins** and **operations / calculations** in your stylesheets, together with a **full stack html5 css framework** that leverages all those exciting new technologies!
 
+New Features:
+----
+### Flawless Ui Menu 
+New to version 1.2 is the jQuery interface which allows to quickly access the compressed css code, enable yui profiling from html5boilerplate and see the html 5 outline of your document with the help of [HTML 5 Outliner](http://code.google.com/p/h5o/)! You can find the menu opener at bottom left in the browser window - click the button to open the dialog!
+
+### Html 5 Outliner
+The outliner shows your current document's structur with the new html 5 algorithm to structur documents. This is important to write semantic websites! Just click on the links to highlight the various sections of your document.
+
 Best Features:
 -----
 
@@ -18,9 +26,6 @@ Yes you can use **css 3 today even in IE 6** - the integrated [PIE script](http:
 
 ### Go Cutting edge with HTML 5 today!
 **Completely based on [Html5 Boilerplate](http://html5boilerplate.com/)** to provide the most professional starting point available for html 5 today together with other great projects like [Modernizr](http://www.modernizr.com/) which are included! This way you can write html5 today in all Browsers!
-
-### Flawless Ui Menu 
-New to version 1.2 is the jQuery interface which allows to quickly access the compressed css code, enable yui profiling from html5boilerplate and see the html 5 outline of your document!
 
 ### Media Queries and Responsive Layouts
 Modern Browsers and most Mobile versions understand Media Queries, so you can take advance of **responsive layouts** that change their appearance in reaction to smaller screen sizes! Things like [Less Framework 2](http://lessframework.com/) are extremely easy to achieve! (look at the css/style.less for an example)
