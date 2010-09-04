@@ -2,7 +2,7 @@
 
 // call PROFILE.show() to show the profileViewer
 
-var PROFILE = {
+var FLAWLESS_PROFILE = {
 
   init : function(bool) {
   
@@ -53,9 +53,8 @@ var PROFILE = {
   }
 
 };
-
+FLAWLESS_PROFILE.init(true);
 // check some global debug variable to see if we should be profiling..
-if (FLAWLESS_DEBUG) { 
-	PROFILE.init(true);
-	PROFILE.show();
+if (FLAWLESS_PROFILING) { 
+	FLAWLESS_PROFILE.show();
 }
