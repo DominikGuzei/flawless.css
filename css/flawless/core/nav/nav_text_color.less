@@ -1,0 +1,15 @@
+.nav_text_color(@normal: black, @hover: white, @active: white) {
+	li {
+		a:link, a:visited {
+			color: @normal;
+		}
+		
+		a:hover {
+			color: @hover;	
+		}
+		
+		a.active, .active a {
+			color: @active;	
+		}
+	}
+}

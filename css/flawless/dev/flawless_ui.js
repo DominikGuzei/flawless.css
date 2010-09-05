@@ -15,6 +15,30 @@ jQuery(document).ready(function($) {
 			$('#flawless-ui-opener').attr("checked", false);
 		}
 		
+		var initPlugins = function() {
+			var css = flawless_css();
+			$("#flawless-compress").html('<p><strong>Flaw{LESS} Css Framework</strong> - generated and compressed css (~' + flawless_size(css.length) + ')</p><textarea style="font-size: 60%; width: 99%; height: 300px">'+css+'</textarea>');
+			
+			$("#flawless-outline").html(getHTML5Outline());
+			
+			/* -------- PLUGIN SETUPS ------------ */
+		
+			// outliner highlight on click
+			$("#flawless-outline a").each(function(i, elem) {
+				$(this).click(function() {
+					$($(this).attr("href")).effect("highlight", {}, 2000);
+					return false; // prevent default
+				});
+			});
+			
+			// profiling call
+			$('#flawless-profile-opener').click(function() {
+				if($(this).attr("checked")) {
+					FLAWLESS_PROFILE.show();
+				}
+			});
+		}
+		
 		var buildTabs = function() {
 			
 			var tabs = '<div id="flawless-ui-tabs"><ul>'
@@ -29,20 +53,19 @@ jQuery(document).ready(function($) {
 			// ---------- ADD TAB-CONTENT HERE ----------
 			
 			/* compress tab */
-			var css = flawless_css();
-			tabs += '<div id="flawless-compress"><p><strong>Flaw{LESS} Css Framework</strong> - generated and compressed css (~' + flawless_size(css.length) + ')</p><textarea style="font-size: 60%; width: 99%; height: 300px">'+css+'</textarea></div>';
+			tabs += '<div id="flawless-compress"></div>';
 			
 			/* yui profiling tab */
 			tabs += '<div id="flawless-profile"><input type="checkbox" id="flawless-profile-opener" /> Show yui profiling!</div>';
 			
 			/* html 5 outliner tab */
-			tabs += '<div id="flawless-outline">' + getHTML5Outline() + '</div>';
+			tabs += '<div id="flawless-outline"></div>';
 			
 			tabs += '</div>'; // close ui tabs
 			return tabs;
 		}
 		
-		$("body").append("<div style='line-height:30px; width: 100px; position: fixed; bottom: 0; left: 0; border: 1px solid #ccc'><input type='checkbox' id='flawless-ui-opener' /><a id='flawless-ui-opener-link' href='#'>Flaw{less}</a></div>");
+		$("body").append("<div style='background: white; line-height:30px; width: 100px; position: fixed; bottom: 0; left: 0; border: 1px solid #ccc'><input type='checkbox' id='flawless-ui-opener' /><a id='flawless-ui-opener-link' href='#'>Flaw{less}</a></div>");
 		
 		// generate the menu dialog
 		var $dialog = $('<div id="flawless-ui-menu"></div>')
@@ -54,9 +77,15 @@ jQuery(document).ready(function($) {
 				close: dialogClosed
 			});
 		
+		var firstOpen = false;
+		
 		// toggle menu with opener
 		$('#flawless-ui-opener').click(function() {
 			if($(this).attr("checked")) {
+				if(firstOpen) {
+					initPlugins();
+					firstOpen = true;	
+				}
 				$dialog.dialog('open');
 			} else {
 				$dialog.dialog('close');	
@@ -69,7 +98,11 @@ jQuery(document).ready(function($) {
 				$dialog.dialog('close');
 				check.attr("checked" , false);
 			} else {
-				$dialog.dialog('open');	
+				$dialog.dialog('open');
+				if(firstOpen) {
+					initPlugins();
+					firstOpen = true;	
+				}	
 				check.attr("checked" , true);
 			}
 			return false; // prevent default link action
@@ -78,21 +111,5 @@ jQuery(document).ready(function($) {
 		// init tabs
 		$("#flawless-ui-tabs").tabs();
 		
-		/* -------- PLUGIN SETUPS ------------ */
-		
-		// outliner highlight on click
-		$("#flawless-outline a").each(function(i, elem) {
-			$(this).click(function() {
-				$($(this).attr("href")).effect("highlight", {}, 2000);
-				return false; // prevent default
-			});
-		});
-		
-		// profiling call
-		$('#flawless-profile-opener').click(function() {
-			if($(this).attr("checked")) {
-				FLAWLESS_PROFILE.show();
-			}
-		});
 	}
 });

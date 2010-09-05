@@ -89,12 +89,13 @@ body {
 	.nav_skip_link();
 }
 
+@page-margin: 40px;
+
 /* This is the wrapper element we declare as grid */
 #page {
 	/* This mixin makes this element a grid */
 	.grid();
-	
-	margin-top: 40px; /* add a little spacing above */
+	margin-top: @page-margin; /* add a little spacing above */
 	/* Here we define a linear gradient background for the whole
 	 * grid element. You can see the effect at the second sidebar */
 	.css3_linear_gradient(#F1F1F1, #CCC );
@@ -111,6 +112,7 @@ body {
 	#page {
 		/* change min-width to 0px to allow smaller sizes */
 		.grid(@grid_width, @grid_columns, @grid_gap, @grid_align, 0px, 960px);	
+		margin-top: @page-margin; /* add a little spacing above */
 	}
 }
 
@@ -127,8 +129,18 @@ header {
 nav#main-menu {
 	/* the navigation spans all 8 columns */
 	.grid_span(8);	
-	/* apply the default flawless navigation theme */
-	.nav_rounded_horizontal(#E3E3E3, @bgColor, #000, #000, 0px 5px 0px 0px);
+	/* compose a horizontal navigation */
+	.nav_horizontal();
+	/* these are the colors for the states - normal, hover, active */
+	.nav_background(#E3E3E3, @bgColor, @bgColor);
+	.nav_text_color(black, black, black);
+	
+	/* like css rounded corners: top-left, top-right, bottom-right, bottom-left */
+	.nav_rounded(0px 5px 0px 0px);
+	/* padding around the text */
+	.nav_padding(0.5em 1em);
+	/* define gaps left, right of each nav item */
+	.nav_gap(0, 0.3em);
 }
 
 /* this element is a wrapper for the equal columns used

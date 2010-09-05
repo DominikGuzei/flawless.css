@@ -1,0 +1,14 @@
+.nav_border(@normal: 1px solid #9CC9E1, @hover: 1px solid black, @active: 1px solid black) {
+	li {
+		a:link, a:visited {
+			border: @normal;
+		}
+		a:hover {
+			border: @hover;	
+		}
+		
+		a.active, .active a {
+			border: @active;	
+		}
+	}
+}
