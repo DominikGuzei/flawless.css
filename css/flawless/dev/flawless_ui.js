@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 		// toggle menu with opener
 		$('#flawless-ui-opener').click(function() {
 			if($(this).attr("checked")) {
-				if(firstOpen) {
+				if(!firstOpen) {
 					initPlugins();
 					firstOpen = true;	
 				}
@@ -99,7 +99,7 @@ jQuery(document).ready(function($) {
 				check.attr("checked" , false);
 			} else {
 				$dialog.dialog('open');
-				if(firstOpen) {
+				if(!firstOpen) {
 					initPlugins();
 					firstOpen = true;	
 				}	
