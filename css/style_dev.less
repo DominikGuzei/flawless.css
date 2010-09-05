@@ -83,6 +83,8 @@ body {
 	.type_rhythm();
 	/* this adds the standard typography theme with custom families and colors */
 	.type_theme_flawless(@type-family, @type-head-family, #333, #036);
+	
+	padding-top: 40px; /* add a little spacing above */
 }
 /* convenient skip link functionality included in the nav module */
 #skip-link {
@@ -95,7 +97,6 @@ body {
 #page {
 	/* This mixin makes this element a grid */
 	.grid();
-	margin-top: @page-margin; /* add a little spacing above */
 	/* Here we define a linear gradient background for the whole
 	 * grid element. You can see the effect at the second sidebar */
 	.css3_linear_gradient(#F1F1F1, #CCC );
@@ -112,7 +113,6 @@ body {
 	#page {
 		/* change min-width to 0px to allow smaller sizes */
 		.grid(@grid_width, @grid_columns, @grid_gap, @grid_align, 0px, 960px);	
-		margin-top: @page-margin; /* add a little spacing above */
 	}
 }
 
