@@ -2485,7 +2485,7 @@ function error(e, href) {
     elem.className = "less-error-message";
 
     content = '<h3>'  + (e.message || 'There is an error in your .less file') +
-              '</h3>' + '<p><a href="' + href   + '">' + href + "</a> ";
+              '</h3>' + '<p><a href="../../dev/' + href   + '">' + href + "</a> ";
 
     if (e.extract) {
         content += 'on line ' + e.line + ', column ' + (e.column + 1) + ':</p>' +

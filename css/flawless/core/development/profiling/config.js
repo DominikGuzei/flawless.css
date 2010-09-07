@@ -37,7 +37,7 @@ var FLAWLESS_PROFILE = {
           var s = document.createElement('link');
           s.setAttribute('rel','stylesheet');      
           s.setAttribute('type','text/css');
-          s.setAttribute('href','js/profiling/yahoo-profiling.css');
+          s.setAttribute('href','css/flawless/core/development/profiling/yahoo-profiling.css');
           document.body.appendChild(s);
           
 	        YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam');

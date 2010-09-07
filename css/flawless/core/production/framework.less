@@ -8,7 +8,7 @@
  * which can be used by modules to include images
  * and other path related elements.
  */
- @setup_framework_path: "css/flawless";
+ @setup_framework_path: "css/flawless/core/production";
 
 /*
  * @setup_vertical_rhythm
@@ -26,13 +26,13 @@
  */
  @setup_font_size: 12;
 
-/* install core modules */
-@import "core/util/install.less";
-@import "core/reset/install.less";
-@import "core/grid/install.less";
-@import "core/css3/install.less";
-@import "core/type/install.less";
-@import "core/nav/install.less";
+/* install framework modules */
+@import "framework/util/install.less";
+@import "framework/reset/install.less";
+@import "framework/grid/install.less";
+@import "framework/css3/install.less";
+@import "framework/type/install.less";
+@import "framework/nav/install.less";
 
 /* install addon modules */
-@import "addons/install.less";
+@import "../../addons/install.less";
