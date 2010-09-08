@@ -1,3 +1,35 @@
+/* Flaw{LESS} Css Framework - css compression plugin */
+
+function flawless_size(count) {
+	var level = 0;
+
+	while(count > 1024) {
+		count = count/1024;
+		level++;
+	}
+
+	// Round to 2 decimals
+	count = Math.round(count*100)/100;
+
+	level = (['', 'K', 'M', 'G', 'T'])[level];
+
+	return '<strong>' + count + '</strong> ' + level + 'B';
+}
+
+function flawless_css() {
+  var styleNode = document.getElementById("less:flawless_css");
+  var css = '';
+  if (styleNode.styleSheet) { // IE
+      css = styleNode.styleSheet.cssText;
+  } else {
+      css = styleNode.firstChild.nodeValue;
+  }
+  css = compress(css, true, false);
+  css = css.replace(/0{5,11}|1{5,11}|2{5,11}|3{5,11}|4{5,11}|5{5,11}|6{5,11}|7{5,11}|8{5,11}|9{5,11}/g, '');
+
+  return css;
+}
+
 /* This script compresses or pretty prints valid CSS code */
 /* Author: datube - Date: 2005-11-08 - Revision: 0.0.3-1 */
 
@@ -177,34 +209,4 @@ var c='';var i=0;
          css[3].join('}')+((css[3].length!=0)?'}':''); 
          
   return  sout;
-}
-
-function flawless_size(count) {
-	var level = 0;
-
-	while(count > 1024) {
-		count = count/1024;
-		level++;
-	}
-
-	// Round to 2 decimals
-	count = Math.round(count*100)/100;
-
-	level = (['', 'K', 'M', 'G', 'T'])[level];
-
-	return '<strong>' + count + '</strong> ' + level + 'B';
-}
-
-function flawless_css() {
-  var styleNode = document.getElementById("less:flawless_css");
-  var css = '';
-  if (styleNode.styleSheet) { // IE
-      css = styleNode.styleSheet.cssText;
-  } else {
-      css = styleNode.firstChild.nodeValue;
-  }
-  css = compress(css, true, false);
-  css = css.replace(/0{5,11}|1{5,11}|2{5,11}|3{5,11}|4{5,11}|5{5,11}|6{5,11}|7{5,11}|8{5,11}|9{5,11}/g, '');
-
-  return css;
 }

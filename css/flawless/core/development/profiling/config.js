@@ -21,7 +21,7 @@ var FLAWLESS_PROFILE = {
     if (bool){
       $(document).keyup(function(e){
         if (e.keyCode === 120){ 
-          PROFILE.show(); 
+          FLAWLESS_PROFILE.show(); 
           $(document).unbind('keyup',arguments.callee); 
         }
       })
@@ -31,30 +31,16 @@ var FLAWLESS_PROFILE = {
   //When the showProfile button is clicked, use YUI Loader to get all required
   //dependencies and then show the profile:
   show : function() {
-  
-          
-          
-          var s = document.createElement('link');
-          s.setAttribute('rel','stylesheet');      
-          s.setAttribute('type','text/css');
-          s.setAttribute('href','css/flawless/core/development/profiling/yahoo-profiling.css');
-          document.body.appendChild(s);
-          
-	        YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam');
+	
+	YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam');
 
-      		//instantiate ProfilerViewer with desired options:
-      		var pv = new YAHOO.widget.ProfilerViewer("", {
-      			visible: true, //expand the viewer mmediately after instantiation
-      			showChart: true,
-      		  //	base:"../../build/",
-      		  swfUrl: "js/profiling/charts.swf"
-      		});
-  	
+	//instantiate ProfilerViewer with desired options:
+	var pv = new YAHOO.widget.ProfilerViewer("", {
+		visible: true, //expand the viewer mmediately after instantiation
+		showChart: true,
+	  //	base:"../../build/",
+	  swfUrl: FLAWLESS_DIRECTORY + "core/development/profiling/charts.swf"
+	});
   }
-
 };
 FLAWLESS_PROFILE.init(true);
-// check some global debug variable to see if we should be profiling..
-if (FLAWLESS_PROFILING) { 
-	FLAWLESS_PROFILE.show();
-}

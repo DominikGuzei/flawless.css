@@ -31,6 +31,9 @@ jQuery(document).ready(function($) {
 				});
 			});
 			
+			/* profile html */
+			$('#flawless-profile').html('<input type="checkbox" id="flawless-profile-opener" /> Show yui profiling! (or use F9 as shortcut anytime)');
+			
 			// profiling call
 			$('#flawless-profile-opener').click(function() {
 				if($(this).attr("checked")) {
@@ -56,7 +59,7 @@ jQuery(document).ready(function($) {
 			tabs += '<div id="flawless-compress"></div>';
 			
 			/* yui profiling tab */
-			tabs += '<div id="flawless-profile"><input type="checkbox" id="flawless-profile-opener" /> Show yui profiling!</div>';
+			tabs += '<div id="flawless-profile"></div>';
 			
 			/* html 5 outliner tab */
 			tabs += '<div id="flawless-outline"></div>';

@@ -24,6 +24,19 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
+    <!-- ======= DEVELOPMENT SCRIPT - PLEASE DELETE OR COMMENT OUT FOR PRODUCTION ======= -->
+  	
+  	<!-- This is the DEVELOPMENT script and stylesheet. This loads the complete framework components
+    	 while development and allows us to use the less.js framework to generate the css code 
+         for us and use variables and mixins. When you are finished with development comment out 
+         this tags or delete them completely -->
+    <link rel="stylesheet/less" type="text/css" href="css/style_dev.less" title="flawless_css" />
+    <script type="text/javascript">
+		var FLAWLESS_DIRECTORY = "css/flawless/"; // path to the flawless folder
+    	var FLAWLESS_MENU = true; // set this to false to deactivate flawless ui (best for profiling with F9)
+    </script>
+	<script type="text/javascript" src="css/flawless/core/development/init.js"></script>
+    
     <!-- ======= PRODUCTION STYLESHEET - PLEASE UNCOMMENT THIS FOR PRODUCTION ========
     	 This is the stylesheet we use in production. When you are ready with the
     	 current development cycle just open the flawless menu at the bottom left of the page
@@ -32,18 +45,6 @@
      <!--
      <link rel="stylesheet" type="text/css" href="css/style_production.css" /> 
      -->
-    
-    <!-- ======= DEVELOPMENT SCRIPTS - PLEASE DELETE OR COMMENT OUT FOR PRODUCTION ======= -->
-  	
-  	<!-- This is the DEVELOPMENT stylesheet. This allows us to use the less.js framework
-    	 to generate the css code for us and use variables and mixins. When you are finished
-         with development comment this two includes or delete them completely -->
-    <link type="text/css" href="css/flawless/core/development/jquery-ui-1.8.4/jquery-ui-1.8.4.css" rel="stylesheet" />
-    <link rel="stylesheet/less" type="text/css" href="css/style_dev.less" title="flawless_css" />
-	<script type="text/javascript" src="css/flawless/core/development/less.js"></script>
-    <script type="text/javascript">less.watch();</script> 
-    
-    <!-- Javascript at the bottom for fast page loading -->
     
     <!-- ========= NEEDED BY FLAWLESS CSS FRAMEWORK - DONT DELETE ========== -->
     
@@ -107,40 +108,5 @@
     	</div>
     </footer>
 </div>
-	<!-- ============ OPTIONAL FOR PRODUCTION - DELETE IF NOT NEEDED ============ -->
-    
-    <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script>!window.jQuery && document.write('<script src="css/flawless/core/development/jquery-1.4.2.min.js"><\/script>')</script>
-    
-    <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet 
-         change the UA-XXXXX-X to be your site's ID -->
-    <script>
-     var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-     (function(d, t) {
-      var g = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      g.async = true;
-      g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g, s);
-     })(document, 'script');
-    </script>
-    
-    <!-- ========= DEVELOPMENT SCRIPTS - PLEASE DELETE OR COMMENT OUT ON PRODUCTION ======== -->
-    
-	<script type="text/javascript">
-        FLAWLESS_MENU = true; // does not work in Internet Explorer < 8
-		FLAWLESS_PROFILING = false;
-    </script>
-    <!-- yui profiler and profileviewer - remove for production -->
-    <script type="text/javascript" src="css/flawless/core/development/profiling/yahoo-profiling.min.js?v=1"></script>
-    <script type="text/javascript" src="css/flawless/core/development/profiling/config.js?v=1"></script>
-    <!-- end profiling code -->
-    
-    <script type="text/javascript" src="css/flawless/core/development/html5-outliner.js"></script>  
-    <script type="text/javascript" src="css/flawless/core/development/compress-1.0.js"></script>
-    
-    <script type="text/javascript" src="css/flawless/core/development/jquery-ui-1.8.4/jquery-ui-1.8.4.js"></script>
-    <script type="text/javascript" src="css/flawless/core/development/flawless_ui.js"></script> 
 </body>
 </html>
