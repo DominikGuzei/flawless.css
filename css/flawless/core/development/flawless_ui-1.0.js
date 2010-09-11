@@ -4,7 +4,7 @@
  
 jQuery(document).ready(function($) {
 	
-	if(FLAWLESS_MENU) {
+	if(flawless.config("FLAWLESS_MENU")) {
 		var getHTML5Outline = function() {
 			var outliner = HTML5Outline(document.getElementsByTagName("body")[0]);
 			return outliner.asHTML(true);

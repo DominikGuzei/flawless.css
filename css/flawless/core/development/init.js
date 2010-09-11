@@ -3,6 +3,10 @@
  * YUI 3 is used here because of it's awesome module loading capabilities! */
 	 
 function flawless_init() {
+	
+	if(!flawless.isset("FLAWLESS_DIRECTORY")) {
+		return flawless.log("error", "FLAWLESS_DIRECTORY variable is missing - define it to point at your Flaw{LESS} framework installation");
+	}
 	 
 	YUI({
 		base: FLAWLESS_DIRECTORY + 'core/development/',
@@ -55,8 +59,38 @@ function flawless_init() {
 		}
 	}).use('less_js', 'flawless_ui', function(Y) {
 		// all modules are now loaded - setup global functionality.
-		less.watch();
+		
+		// turn on watch mode for real time updates on styles
+		if(flawless.config("FLAWLESS_WATCH")) less.watch();
+		
+		// required to use with other js libraries like prototype
+		jQuery.noConflict(); 
 	});	
+}
+
+/* flawless object to provide basic functionality */
+
+var flawless = {};
+
+/* Basic utility function for better global var error handling */
+
+flawless.isset = function (globalVar) {
+	if(typeof(globalVar) == "string") { return window[globalVar] != undefined; }
+	else { return false; }	
+}
+
+flawless.config = function(globalVar) {
+	return flawless.isset(globalVar) && window[globalVar];	
+}
+
+/* Basic wrapper around console */
+
+flawless.log = function(type, msg) {
+	if(window['console'] != undefined && console[type] != undefined) {
+		console[type](msg);	
+	} else {
+		alert(type + ": " + msg);
+	}	
 }
 
 /*
