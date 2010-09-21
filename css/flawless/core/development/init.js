@@ -8,7 +8,7 @@ function flawless_init() {
 		return flawless.log("error", "FLAWLESS_DIRECTORY variable is missing - define it to point at your Flaw{LESS} framework installation");
 	}
 	 
-	YUI({
+	var FL_YUI = YUI({
 		base: FLAWLESS_DIRECTORY + 'core/development/',
 		modules: {
 			less_js: {
@@ -57,15 +57,26 @@ function flawless_init() {
 				requires: ['jquery_ui', 'yui_profiling_config', 'html5outliner', 'compress']	
 			}
 		}
-	}).use('less_js', 'flawless_ui', function(Y) {
-		// all modules are now loaded - setup global functionality.
-		
-		// turn on watch mode for real time updates on styles
-		if(flawless.config("FLAWLESS_WATCH")) less.watch();
-		
-		// required to use with other js libraries like prototype
-		jQuery.noConflict(); 
-	});	
+	});
+	
+	if(flawless.config("FLAWLESS_MENU")) {
+		FL_YUI.use('less_js', 'flawless_ui', function(Y) {
+			// all modules are now loaded - setup global functionality.
+			
+			// turn on watch mode for real time updates on styles
+			if(flawless.config("FLAWLESS_WATCH")) less.watch();
+			
+			// required to use with other js libraries like prototype
+			jQuery.noConflict(); 
+		});	
+	} else {
+		FL_YUI.use('less_js', function(Y) {
+			// all modules are now loaded - setup global functionality.
+			
+			// turn on watch mode for real time updates on styles
+			if(flawless.config("FLAWLESS_WATCH")) less.watch();
+		});	
+	}
 }
 
 /* flawless object to provide basic functionality */
