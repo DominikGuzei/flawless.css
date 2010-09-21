@@ -2254,6 +2254,9 @@ if (less.env === 'development') {
     less.optimization = 3;
 }
 
+var cache = null;
+
+/* -> we dont need caching - it actually sucks for framework development
 var cache;
 
 try {
@@ -2261,6 +2264,7 @@ try {
 } catch (_) {
     cache = null;
 }
+*/
 
 //
 // Get all <link> tags with the 'rel' attribute set to "stylesheet/less"
