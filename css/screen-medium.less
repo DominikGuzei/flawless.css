@@ -1,0 +1,27 @@
+/* All styles that get applied on screen sizes smaller than 768 px */
+
+/* Now we come to the real shit. Responsive Webdesign!
+ * Here define what should happen when the page is viewed
+ * on a small screen or browser window. All these rules
+ * apply as soon as the window size is smaller than 767px
+ * but bigger than 480px (because we add another query for
+ * the real small devices like iphone)
+ */
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+	
+	article {
+		.grid_span(8);/* make the article span the full 8 columns */
+		.grid_unshift(); /* we have to undo the shifting */
+		.grid_col_equal_remove(); /* remove the equal columns */
+	}
+	#sidebar-1 {
+		.grid_span(4); /* grow the sidebar to 4 columns */
+		.grid_unshift();
+		.grid_col_equal_remove();
+	}
+	#sidebar-2 {
+		.grid_span(4); /* as this one, this makes a cute 2 column layout */
+		.grid_col_equal_remove();	
+	}
+}

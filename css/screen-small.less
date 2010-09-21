@@ -1,0 +1,24 @@
+/* All styles that get applied on screen sizes smaller than 480 px */
+
+/* This applies to really small devices and screens ( < 480px)
+ * Here we basically make all columns span the full 8 grid cols
+ * so that our content flows like a waterfall and can be better
+ * viewed on iphones and other mobile phones
+ */
+
+@media only screen and (max-width: 480px) {
+	article {
+		.grid_span(8);
+		.grid_unshift();
+		.grid_col_equal_remove();
+	}
+	#sidebar-1 {
+		.grid_span(8);
+		.grid_unshift();
+		.grid_col_equal_remove();
+	}
+	#sidebar-2 {
+		.grid_span(8);	
+		.grid_col_equal_remove();
+	}
+}
