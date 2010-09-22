@@ -34,7 +34,10 @@
     <script type="text/javascript">
 		var FLAWLESS_DIRECTORY = "css/flawless/"; // path to the flawless folder
     	var FLAWLESS_MENU = true; // set this to false to deactivate flawless ui (best for profiling with F9)
-    	var FLAWLESS_WATCH = true;
+    	var FLAWLESS_WATCH = true; // enable watch mode -> changes to files update in browser
+		var FLAWLESS_WATCH_INTERVAL = 3000; // fetch files every 3 seconds
+		var FLAWLESS_FRAMEWORK_CACHING = true; // cache framework files, performance! -> reload for changes
+		var FLAWLESS_CUSTOM_CACHING = false; // cache custom files @imported in style_dev -> bad for watch mode
     </script>
 	<script type="text/javascript" src="css/flawless/core/development/init.js"></script>
     

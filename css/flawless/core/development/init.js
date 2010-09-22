@@ -15,6 +15,11 @@ function flawless_init() {
 				type: 'js',
 				path: 'less-1.0.35.js' 	
 			},
+			flawless_less: {
+				type:'js',
+				path: 'flawless-less-0.1.js',
+				requires: ['less_js']	
+			},
 			jquery: {
 				type: 'js',
 				path: 'jquery-1.4.2.js'		
@@ -59,23 +64,52 @@ function flawless_init() {
 		}
 	});
 	
+	flawless.coreLoaded = false;
+	flawless.addonsLoaded = false;
+	
+	/* watch interval config */
+	if(flawless.isset("FLAWLESS_WATCH_INTERVAL")) {
+		flawless.watchInterval = FLAWLESS_WATCH_INTERVAL;	
+	} else {
+		flawless.watchInterval = 3000; // default: 3 seconds	
+	}
+	
+	/* should we cache the framework files ? */
+	if(flawless.isset("FLAWLESS_FRAMEWORK_CACHING")) {
+		flawless.frameworkCaching = FLAWLESS_FRAMEWORK_CACHING;	
+	} else {
+		flawless.frameworkCaching = true; // default: true	
+	}
+	
+	/* should we cache all files, also custom ones? -> default less.js behaviour */
+	if(flawless.isset("FLAWLESS_CUSTOM_CACHING")) {
+		flawless.customCaching = FLAWLESS_CUSTOM_CACHING;	
+	} else {
+		flawless.customCaching = false; // default: false
+	}
+	
 	if(flawless.config("FLAWLESS_MENU")) {
-		FL_YUI.use('less_js', 'flawless_ui', function(Y) {
-			// all modules are now loaded - setup global functionality.
-			
-			// turn on watch mode for real time updates on styles
-			if(flawless.config("FLAWLESS_WATCH")) less.watch();
-			
-			// required to use with other js libraries like prototype
-			jQuery.noConflict(); 
+		FL_YUI.use('flawless_less', 'flawless_ui', function(Y) {
+			init(true);
 		});	
 	} else {
-		FL_YUI.use('less_js', function(Y) {
-			// all modules are now loaded - setup global functionality.
-			
-			// turn on watch mode for real time updates on styles
-			if(flawless.config("FLAWLESS_WATCH")) less.watch();
+		FL_YUI.use('flawless_less', function(Y) {
+			init(false);
 		});	
+	}
+	
+	function init(menu) {
+		/* activate less.js parsing */
+		flawless.initLess();
+		// all modules are now loaded - setup global functionality.
+		
+		// turn on watch mode for real time updates on styles
+		if(flawless.config("FLAWLESS_WATCH")) less.watch();
+		
+		if(menu) {
+			// required to use with other js libraries like prototype
+			jQuery.noConflict();
+		}
 	}
 }
 
@@ -103,6 +137,22 @@ flawless.log = function(type, msg) {
 		alert(type + ": " + msg);
 	}	
 }
+
+/* basic cache */
+flawless.cache = function() {
+	
+	var values = [];
+	
+	return {
+		setItem: function(key, val) {
+			values[key] = val;
+		},
+		
+		getItem: function(key) {
+			return values[key];	
+		}
+	}
+}();
 
 /*
 Copyright (c) 2010, Yahoo! Inc. All rights reserved.

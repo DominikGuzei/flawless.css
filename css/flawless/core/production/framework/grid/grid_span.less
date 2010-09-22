@@ -6,20 +6,8 @@
  *  units (px, em) for the calculation. This way you can use
  *  any units for your grid.
  */
-.spanWidth(@number, @width: @grid_width, @columns: @grid_columns) {
-  @tempWidth: @width;
-  @c: @columns;
-  @n: @number;
-  @w: e(`this.tempWidth.toJS().match(/\d+/)[0]`);
-  @unit: e(`this.tempWidth.toJS().match(/px|%|em|pt|ex|in|cm|mm|pc/)[0]`);
-  width: e(`((this.unit.toJS() == '%') || (this.unit.toJS() == 'em')) ? 
-                (100 / this.c.toJS() * this.n.toJS() ) + '%' 
-                : 
-                (this.w.toJS() / this.c.toJS() * this.n.toJS() +''+this.unit.toJS() )
-         `);
-}
 
-.grid_span(@columns) {
-	.spanWidth(@columns);	
+.grid_span(@count) {
+	width: fl_ColumnsWidth(@count, @grid_width, @grid_columns);	
 }
 	

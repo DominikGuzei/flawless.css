@@ -5,7 +5,7 @@
 // Copyright (c) 2010, Alexis Sellier
 // Licensed under the Apache 2.0 License.
 //
-(function (window, undefined) {
+(function(window, undefined) {
 //
 // Stub out `require` in the browser
 //
@@ -1374,7 +1374,7 @@ tree.Call.prototype = {
     //
     eval: function (env) {
         var args = this.args.map(function (a) { return a.eval(env) });
-
+		
         if (this.name in tree.functions) { // 1.
             return tree.functions[this.name].apply(tree.functions, args);
         } else { // 2.
@@ -1672,6 +1672,7 @@ tree.Import.prototype = {
         }
     },
     eval: function (env) {
+
         var ruleset;
 
         if (this.css) {
@@ -2208,6 +2209,7 @@ var isFileProtocol = (location.protocol === 'file:'    ||
                       location.protocol === 'chrome:'  ||
                       location.protocol === 'resource:');
 
+/* CHANGE */
 /* flawless css is always in development mode */
 less.env = 'development';
 /*
@@ -2226,8 +2228,9 @@ less.env = less.env || (location.hostname == '127.0.0.1' ||
 //
 less.async = false;
 
+/* CHANGE - enable flawless watch interval setting */
 // Interval between watch polls
-less.poll = less.poll || (isFileProtocol ? 1000 : 1500);
+less.poll = less.poll || (isFileProtocol ? 1000 : flawless.watchInterval);
 
 //
 // Watch mode
@@ -2254,9 +2257,6 @@ if (less.env === 'development') {
     less.optimization = 3;
 }
 
-var cache = null;
-
-/* -> we dont need caching - it actually sucks for framework development
 var cache;
 
 try {
@@ -2264,7 +2264,7 @@ try {
 } catch (_) {
     cache = null;
 }
-*/
+
 
 //
 // Get all <link> tags with the 'rel' attribute set to "stylesheet/less"
@@ -2301,7 +2301,11 @@ less.refresh = function (reload) {
 };
 less.refreshStyles = loadStyles;
 
-less.refresh(less.env === 'development');
+/* CHANGE */
+/* init less ourselves to incept own functions */
+flawless.initLess = function() {
+	less.refresh(less.env === 'development');
+}
 
 function loadStyles() {
     var styles = document.getElementsByTagName('style');
@@ -2322,42 +2326,72 @@ function loadStyleSheets(callback, reload) {
 }
 
 function loadStyleSheet(sheet, callback, reload, remaining) {
-    var url       = window.location.href;
+    
+	/* CHANGE - enable caching of framework and / or custom files */
+	
+	if(!flawless.customCaching) {
+		reload = true;
+	}
+	
+	var href = sheet.href.replace(/\?.*$/, '');
+	
+	if(flawless.frameworkCaching) {
+		/* all flawless core files get cached */
+		if(href.search(/flawless\/loader\.less/) != -1) {
+			if(flawless.cache.getItem(href + ':root') != undefined) {
+				
+				try {
+					callback(flawless.cache.getItem(href + ':root'), sheet, { local: false, remaining: remaining });
+					removeNode(document.getElementById('less-error-message:' + extractId(href)));
+				} catch (e) {
+					error(e, href);	
+				}
+				return; // skip xhr loading
+			}
+		}
+	}
+	
+	var url       = window.location.href;
     var href      = sheet.href.replace(/\?.*$/, '');
     var css       = cache && cache.getItem(href);
     var timestamp = cache && cache.getItem(href + ':timestamp');
     var styles    = { css: css, timestamp: timestamp };
-
+	
     // Stylesheets in IE don't always return the full path
     if (! /^(https?|file):/.test(href)) {
         href = url.slice(0, url.lastIndexOf('/') + 1) + href;
     }
 
     xhr(sheet.href, function (data, lastModified) {
-        if (!reload && styles &&
-           (new(Date)(lastModified).valueOf() ===
-            new(Date)(styles.timestamp).valueOf())) {
+        if ( (!reload && styles && 
+			 (new(Date)(lastModified).valueOf() === new(Date)(styles.timestamp).valueOf()) )) {
             // Use local copy
-            createCSS(styles.css, sheet);
+			createCSS(styles.css, sheet);
             callback(null, sheet, { local: true, remaining: remaining });
+			
         } else {
-            // Use remote copy (re-parse)
-            try {
-                new(less.Parser)({
-                    optimization: less.optimization,
-                    paths: [href.replace(/[\w\.-]+$/, '')]
-                }).parse(data, function (e, root) {
-                    if (e) { return error(e, href) }
-                    try {
-                        callback(root, sheet, { local: false, lastModified: lastModified, remaining: remaining });
-                        removeNode(document.getElementById('less-error-message:' + extractId(href)));
-                    } catch (e) {
-                        error(e, href);
-                    }
-                });
-            } catch (e) {
-                error(e, href);
-            }
+			// Use remote copy (re-parse)
+			try {
+				new(less.Parser)({
+					optimization: less.optimization,
+					paths: [href.replace(/[\w\.-]+$/, '')]
+				}).parse(data, function (e, root) {
+					if (e) { return error(e, href) }
+					try {
+						/* CHANGE - caching framework core and addons files */
+						if(flawless.frameworkCaching && href.search(/flawless\/loader\.less/) != -1 ) {
+							flawless.cache.setItem(href + ':root', root);
+						}
+		
+						callback(root, sheet, { local: false, lastModified: lastModified, remaining: remaining });
+						removeNode(document.getElementById('less-error-message:' + extractId(href)));
+					} catch (e) {
+						error(e, href);
+					}
+				});
+			} catch (e) {
+				error(e, href);
+			}
         }
     }, function (status, url) {
         throw new(Error)("Couldn't load " + url+ " (" + status + ")");
@@ -2413,7 +2447,7 @@ function createCSS(styles, sheet, lastModified) {
     if (lastModified && cache) {
         log('saving ' + href + ' to cache.');
         cache.setItem(href, styles);
-        cache.setItem(href + ':timestamp', lastModified);
+        cache.setItem(href + ':timestamp', lastModified); 
     }
 }
 
