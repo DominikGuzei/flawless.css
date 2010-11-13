@@ -2208,12 +2208,17 @@ var isFileProtocol = (location.protocol === 'file:'    ||
                       location.protocol === 'chrome:'  ||
                       location.protocol === 'resource:');
 
+/* CHANGE */
+/* flawless.css is always in development mode */
+less.env = 'development';
+/*
 less.env = less.env || (location.hostname == '127.0.0.1' ||
                         location.hostname == '0.0.0.0'   ||
                         location.hostname == 'localhost' ||
                         location.port.length > 0         ||
                         isFileProtocol                   ? 'development'
                                                          : 'production');
+*/
 
 // Load styles asynchronously (default: false)
 //
@@ -2223,8 +2228,9 @@ less.env = less.env || (location.hostname == '127.0.0.1' ||
 //
 less.async = false;
 
+/* CHANGE - enable flawless.css watch interval setting */
 // Interval between watch polls
-less.poll = less.poll || (isFileProtocol ? 1000 : 1500);
+less.poll = less.poll || (isFileProtocol ? 1000 : flawless.watchInterval);
 
 //
 // Watch mode
@@ -2294,7 +2300,11 @@ less.refresh = function (reload) {
 };
 less.refreshStyles = loadStyles;
 
-less.refresh(less.env === 'development');
+/* CHANGE */
+/* init less ourselves to enable monky patching flawless.css functions */
+flawless.initLess = function() {
+    less.refresh(less.env === 'development');
+}
 
 function loadStyles() {
     var styles = document.getElementsByTagName('style');
@@ -2315,6 +2325,31 @@ function loadStyleSheets(callback, reload) {
 }
 
 function loadStyleSheet(sheet, callback, reload, remaining) {
+    
+    /* CHANGE - enable caching of flawless.css framework and / or custom files */
+
+    if (!flawless.customCaching) {
+      reload = true;
+    }
+
+    var href = sheet.href.replace(/\?.*$/, '');
+
+    if (flawless.frameworkCaching) {
+        /* all flawless.css core files get cached */
+        if (href.search(/flawless\/loader\.less/) != -1) {
+            if (flawless.cache.getItem(href + ':root') != undefined) {
+
+                try {
+                    callback(flawless.cache.getItem(href + ':root'), sheet, { local: false, remaining: remaining });
+                    removeNode(document.getElementById('less-error-message:' + extractId(href)));
+                } catch (e) {
+                    error(e, href);
+                }
+                return; // skip xhr loading
+            }
+        }
+    }
+
     var url       = window.location.href;
     var href      = sheet.href.replace(/\?.*$/, '');
     var css       = cache && cache.getItem(href);
@@ -2342,6 +2377,11 @@ function loadStyleSheet(sheet, callback, reload, remaining) {
                 }).parse(data, function (e, root) {
                     if (e) { return error(e, href) }
                     try {
+                        /* CHANGE - caching flawless.css framework core and addons files */
+                        if  (flawless.frameworkCaching && href.search(/flawless\/loader\.less/) != -1 ) {
+                            flawless.cache.setItem(href + ':root', root);
+                        }
+
                         callback(root, sheet, { local: false, lastModified: lastModified, remaining: remaining });
                         removeNode(document.getElementById('less-error-message:' + extractId(href)));
                     } catch (e) {
