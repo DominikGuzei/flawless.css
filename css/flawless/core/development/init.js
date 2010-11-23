@@ -13,7 +13,7 @@ function flawless_init() {
 		modules: {
 			less_js: {
 				type: 'js',
-				path: 'less-1.0.35.js' 	
+				path: 'less-1.0.36.js' 	
 			},
 			flawless_less: {
 				type:'js',
@@ -22,15 +22,15 @@ function flawless_init() {
 			},
 			jquery: {
 				type: 'js',
-				path: 'jquery-1.4.2.js'		
+				path: 'jquery-1.4.4.js'		
 			},
 			jquery_ui_css: {
 				type: 'css',
-				path: 'jquery-ui-1.8.4/jquery-ui-1.8.4.css'	
+				path: 'jquery-ui-1.8.6/jquery-ui-1.8.6.css'	
 			},
 			jquery_ui: {
 				type: 'js',
-				path: 'jquery-ui-1.8.4/jquery-ui-1.8.4.js',
+				path: 'jquery-ui-1.8.6/jquery-ui-1.8.6.js',
 				requires: ['jquery', 'jquery_ui_css']	
 			},
 			compress: {
