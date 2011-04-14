@@ -1,11 +1,15 @@
+// The Magnificent CLEARFIX. Prevents margin-collapsing on child elements.
+// See http://j.mp/bestclearfix
 .util_clearfix() {
-    &:after {
-		content: ".";
+  &:before,
+  &:after {
+		content: "\0020";
 		display: block;
 		height: 0;
-		clear: both;
 		visibility: hidden;
 	}
-	
-	zoom: 1;
- }
+  &:after {
+    clear: both;
+  }
+  zoom: 1;
+}
