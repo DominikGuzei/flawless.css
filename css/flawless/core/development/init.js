@@ -1,6 +1,5 @@
-
 /* Bootstrap the complete development application of Flaw{LESS} Css Framework.
- * YUI 3 is used here because of it's awesome module loading capabilities! */
+ * YUI 3 is used here because of its awesome module loading capabilities! */
 	 
 function flawless_init() {
 	
