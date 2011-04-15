@@ -1,12 +1,18 @@
-// The Magnificent CLEARFIX. Prevents margin-collapsing on child elements.
+//
+// The Magnificent CLEARFIX.
+//
+// Useful for clearing floats without structural markup. This specific clearfix
+// method also prevents margin-collapsing on child elements.
+//
 // See http://j.mp/bestclearfix
+//
 .util_clearfix() {
   &:before,
   &:after {
 		content: "\0020";
 		display: block;
 		height: 0;
-		visibility: hidden;
+		overflow: hidden;
 	}
   &:after {
     clear: both;
