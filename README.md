@@ -19,8 +19,8 @@ Best Features:
 ### View your changes without refreshing the browser!
 During development you can keep your browser window open beside your code and as you make changes and save your .less file in your coding environment—**the browser refreshes to show you the changed layout!** Thanks to Dmitry Fadeyev who pointed that out in his great [article about Less.js](http://fadeyev.net/2010/06/19/lessjs-will-obsolete-CSS)
 
-### CSS 3 like a PIE!
-Yes you can use **CSS 3 today even in IE6**—the integrated [PIE script](http://css3pie.com) makes it possible to render **rounded corners**, **background gradients** and **drop shadows** with Internet Explorer! The best part is, you don’t have to mess with the settings. it’s just one “function call”: 
+### CSS3 like a PIE!
+Yes you can use **CSS3 today even in IE6**—the integrated [PIE script](http://css3pie.com) makes it possible to render **rounded corners**, **background gradients** and **drop shadows** with Internet Explorer! The best part is, you don’t have to mess with the settings. It’s just one “function call”: 
 	
 	.css3_border_radius(10px, 10px, 0, 0);
 
@@ -33,7 +33,7 @@ Modern browsers and most mobile versions understand Media Queries, so you can ta
 ### Content First, Layout on Top!
 Pure semantic HTML is one of the most important goals I had in mind when designing the Flaw{LESS} CSS Framework, so you can completely divide markup and presentation! If you need to change the position of columns there are nice helpers like:
 
-	// first column in markup -> shift it two column to the right
+	// first column in markup -> shift it 2 columns to the right
 	#my-content {
 		.grid_span(4); // this is 4 columns wide
 		.grid_shift_right(2); // shift 2 cols -> width of sidebar
