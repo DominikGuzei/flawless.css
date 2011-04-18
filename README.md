@@ -34,7 +34,7 @@ Modern browsers and most mobile versions understand media queries, so you can ta
 
 See css/style.less for an example.
 
-### Content First. Layout on Top/
+### Content First. Layout on Top
 Pure semantic HTML is one of the most important goals I had in mind when designing the Flaw{LESS} CSS Framework.  That way, you can completely divide markup and presentation. 
 
 For example, if you need to change column positions, there are nice helpers like:
@@ -70,7 +70,7 @@ Most CSS frameworks provide a set of CSS files that make up the rules. You have 
 With **Flaw{LESS} CSS** you begin with no rules at all.
 You add every feature you need via **mixins** that the framework provides.
 
-Here is an example:
+Here’s an example:
 
     .grid_setup(80%, 8, 1.5em, center, 740px, 960px);
 
@@ -91,7 +91,7 @@ Now, let’s define some markup for the grid:
 
 This is the markup we could use for a basic two column layout with header and footer. We don’t have to put any classes about the layout or design here. This is pure semantics, okay?
 
-Here is the CSS needed to build the complete grid:
+Here’s the CSS needed to build the complete grid:
 
      #grid {
         .grid();       /* make this element the grid */
@@ -113,7 +113,7 @@ Here is the CSS needed to build the complete grid:
         .grid_span(8); /* footer has full span of 8 cols */
      }
 
-The best part about this is that **you're not locked into** any rules from the framework. You can change the complete layout any time!  Just change a few arguments in `.grid_setup()` or adjust element sizes by changing how many columns they span.
+The best part about this is that **you're not locked into any rules** from the framework. You can change the complete layout any time!  Just change a few arguments in `.grid_setup()` or adjust element sizes by changing how many columns they span.
 
 Cutting Edge Webdesign
 ----
