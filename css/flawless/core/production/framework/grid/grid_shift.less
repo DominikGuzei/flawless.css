@@ -6,7 +6,7 @@
  */
 
 .grid_shift_left(@count) {
-  right: fl_ColumnsWidth(@count, @grid_width, @grid_columns);
+  .grid_columns_right(@count, @grid_width, @grid_columns);
   position:relative;
 }
 
@@ -18,11 +18,11 @@
  */
 
 .grid_shift_right(@count) {
-  left: fl_ColumnsWidth(@count, @grid_width, @grid_columns);
+  .grid_columns_left(@count, @grid_width, @grid_columns);
   position:relative;
 }
 
 .grid_unshift() {
 	left: 0;
-	right: 0;	
+	right: 0;
 }

@@ -1,0 +1,46 @@
+//
+// massive kludge to embed columns width calculation in LESS so as to support
+// vanilla Less.js.
+//
+// WHY is this code so aweful ?
+// A. Less.js does not support conditionals
+// A. Less.js does not support returning a value from a mixin, mixins must return a property: value pair
+// A. In Less.js inline JS only has access to the local scope, not arguments or the outer scope
+// A. For users of the framework it is an improvement from requiring a customized Less.js
+// A. It is an interim solution that can be improved in the future when Less.js is more powerful
+//
+
+.grid_columns_width(@count, @width, @columns) {
+  @n: @count;
+  @w: @width;
+  @c: @columns;
+  width: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+}
+
+.grid_columns_margin_left(@count, @width, @columns) {
+  @n: @count;
+  @w: @width;
+  @c: @columns;
+  margin-left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+}
+
+.grid_columns_margin_right(@count, @width, @columns) {
+  @n: @count;
+  @w: @width;
+  @c: @columns;
+  margin-right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+}
+
+.grid_columns_left(@count, @width, @columns) {
+  @n: @count;
+  @w: @width;
+  @c: @columns;
+  left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+}
+
+.grid_columns_right(@count, @width, @columns) {
+  @n: @count;
+  @w: @width;
+  @c: @columns;
+  right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+}

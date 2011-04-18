@@ -1,49 +1,44 @@
 /* Bootstrap the complete development application of Flaw{LESS} Css Framework.
  * YUI 3 is used here because of its awesome module loading capabilities! */
-	 
+
 function flawless_init() {
-	
+
 	if(!flawless.isset("FLAWLESS_DIRECTORY")) {
 		return flawless.log("error", "FLAWLESS_DIRECTORY variable is missing - define it to point at your Flaw{LESS} framework installation");
 	}
-	 
+
 	var FL_YUI = YUI({
 		base: FLAWLESS_DIRECTORY + 'core/development/',
 		modules: {
 			less_js: {
 				type: 'js',
-				path: 'less-1.0.36.js' 	
-			},
-			flawless_less: {
-				type:'js',
-				path: 'flawless-less-0.1.js',
-				requires: ['less_js']	
+				path: 'less-1.0.36.js'
 			},
 			jquery: {
 				type: 'js',
-				path: 'jquery-1.4.4.js'		
+				path: 'jquery-1.4.4.js'
 			},
 			jquery_ui_css: {
 				type: 'css',
-				path: 'jquery-ui-1.8.6/jquery-ui-1.8.6.css'	
+				path: 'jquery-ui-1.8.6/jquery-ui-1.8.6.css'
 			},
 			jquery_ui: {
 				type: 'js',
 				path: 'jquery-ui-1.8.6/jquery-ui-1.8.6.js',
-				requires: ['jquery', 'jquery_ui_css']	
+				requires: ['jquery', 'jquery_ui_css']
 			},
 			compress: {
 				type: 'js',
 				path: 'compress-1.0.js',
-				requires: ['jquery']	
+				requires: ['jquery']
 			},
 			html5outliner: {
 				type: 'js',
-				path: 'html5-outliner-1.0.js'	
+				path: 'html5-outliner-1.0.js'
 			},
 			yui_profiling_css: {
 				type: 'css',
-				path: 'profiling/yahoo-profiling.css'	
+				path: 'profiling/yahoo-profiling.css'
 			},
 			yui_profiling: {
 				type: 'js',
@@ -53,58 +48,58 @@ function flawless_init() {
 			yui_profiling_config: {
 				type: 'js',
 				path: 'profiling/config.js',
-				requires: ['yui_profiling']	
+				requires: ['yui_profiling']
 			},
 			flawless_ui: {
 				type: 'js',
 				path: 'flawless_ui-1.0.js',
-				requires: ['jquery_ui', 'yui_profiling_config', 'html5outliner', 'compress']	
+				requires: ['less_js', 'jquery_ui', 'yui_profiling_config', 'html5outliner', 'compress']
 			}
 		}
 	});
-	
+
 	flawless.coreLoaded = false;
 	flawless.addonsLoaded = false;
-	
+
 	/* watch interval config */
 	if(flawless.isset("FLAWLESS_WATCH_INTERVAL")) {
-		flawless.watchInterval = FLAWLESS_WATCH_INTERVAL;	
+		flawless.watchInterval = FLAWLESS_WATCH_INTERVAL;
 	} else {
-		flawless.watchInterval = 3000; // default: 3 seconds	
+		flawless.watchInterval = 3000; // default: 3 seconds
 	}
-	
+
 	/* should we cache the framework files ? */
 	if(flawless.isset("FLAWLESS_FRAMEWORK_CACHING")) {
-		flawless.frameworkCaching = FLAWLESS_FRAMEWORK_CACHING;	
+		flawless.frameworkCaching = FLAWLESS_FRAMEWORK_CACHING;
 	} else {
-		flawless.frameworkCaching = true; // default: true	
+		flawless.frameworkCaching = true; // default: true
 	}
-	
+
 	/* should we cache all files, also custom ones? -> default less.js behaviour */
 	if(flawless.isset("FLAWLESS_CUSTOM_CACHING")) {
-		flawless.customCaching = FLAWLESS_CUSTOM_CACHING;	
+		flawless.customCaching = FLAWLESS_CUSTOM_CACHING;
 	} else {
 		flawless.customCaching = false; // default: false
 	}
-	
+
 	if(flawless.config("FLAWLESS_MENU")) {
 		FL_YUI.use('flawless_less', 'flawless_ui', function(Y) {
 			init(true);
-		});	
+		});
 	} else {
 		FL_YUI.use('flawless_less', function(Y) {
 			init(false);
-		});	
+		});
 	}
-	
+
 	function init(menu) {
 		/* activate less.js parsing */
 		flawless.initLess();
 		// all modules are now loaded - setup global functionality.
-		
+
 		// turn on watch mode for real time updates on styles
 		if(flawless.config("FLAWLESS_WATCH")) less.watch();
-		
+
 		if(menu) {
 			// required to use with other js libraries like prototype
 			jQuery.noConflict();
@@ -120,35 +115,35 @@ var flawless = {};
 
 flawless.isset = function (globalVar) {
 	if(typeof(globalVar) == "string") { return window[globalVar] != undefined; }
-	else { return false; }	
+	else { return false; }
 }
 
 flawless.config = function(globalVar) {
-	return flawless.isset(globalVar) && window[globalVar];	
+	return flawless.isset(globalVar) && window[globalVar];
 }
 
 /* Basic wrapper around console */
 
 flawless.log = function(type, msg) {
 	if(window['console'] != undefined && console[type] != undefined) {
-		console[type](msg);	
+		console[type](msg);
 	} else {
 		alert(type + ": " + msg);
-	}	
+	}
 }
 
 /* basic cache */
 flawless.cache = function() {
-	
+
 	var values = [];
-	
+
 	return {
 		setItem: function(key, val) {
 			values[key] = val;
 		},
-		
+
 		getItem: function(key) {
-			return values[key];	
+			return values[key];
 		}
 	}
 }();
