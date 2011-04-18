@@ -157,9 +157,9 @@ The best thing about Flaw{LESS} CSS Framework is its modular system. Each core m
 
 It’s really easy:
 
-# Create **first_module.less** inside /addons
-# Open "install.less" (also in /addons)
-# Add `@import "first_module.less";` at the end of the install.less
+ - Create **first_module.less** inside /addons
+ - Open "install.less" (also in /addons)
+ - Add `@import "first_module.less";` at the end of the install.less
 
 You’ve just installed your first Flaw{LESS} module!
 
