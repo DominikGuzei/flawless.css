@@ -8,7 +8,7 @@
  * which can be used by modules to include images
  * and other path related elements.
  */
- @setup_framework_path: "css/flawless/core/production";
+ @setup_framework_path: "css/flawless/core";
 
 /*
  * @setup_vertical_rhythm
@@ -18,8 +18,8 @@
  * achieve a vertical rhythm throughout the document
  */
  @setup_vertical_rhythm: 18;
- 
-/*  @setup_font_size 
+
+/*  @setup_font_size
  *  specifies the basic text size "in pixels", note that
  *  all text sizes are actually applied as % or em. This
  *  value is just a relation to the row height.
@@ -27,9 +27,9 @@
  @setup_font_size: 12;
 
 /* install framework modules */
-@import "framework/util/install.less";
-@import "framework/reset/install.less";
-@import "framework/grid/install.less";
-@import "framework/css3/install.less";
-@import "framework/type/install.less";
-@import "framework/nav/install.less";
+@import "util/install.less";
+@import "reset/install.less";
+@import "grid/install.less";
+@import "css3/install.less";
+@import "type/install.less";
+@import "nav/install.less";
