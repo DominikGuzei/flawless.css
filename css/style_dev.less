@@ -1,9 +1,9 @@
 /** 
- *  FLAW{LESS} Css Framework 
+ *  FLAW{LESS} CSS Framework 
  *
  *  Starter Page
  *  This is an example page that shows many of the possibilities
- *	you have by using the FLAW{LESS} Css Framework. The base layout
+ *	you have by using the FLAW{LESS} CSS Framework. The base layout
  *	is divided into 8 columns (in this example) for all devices.
  *	Through media queries the columns change position and width
  *	if viewed with smaller screen sizes.
@@ -22,16 +22,18 @@
  */
 @import "flawless/loader.less";
 
-/* ================== SETUP THE FRAMEWORK  ==================
- * Here you can see the basic three setup variables that most
- * websites will need to set in order to use the framework.
- *
- * it is also important to set up those vars here so that all
- * imported .less files you create build upon this foundation
+/*	================== SETUP THE FRAMEWORK  ==================
+ *	Here you can see the basic three setup variables that most
+ *	websites will need to set in order to use the framework.
+ *	
+ *	it is also important to set up those vars here so that all
+ *	imported .less files you create build upon this foundation
  */
+ 
  
 /* Tell the framework where it is relative to the html file  */
 @setup_framework_path: "css/flawless/core/production";
+
 
 /* The vertical rhythm is used to give your webpages a consistent
  * look. The whole grid system relies on this value to calculate
@@ -40,18 +42,20 @@
  */
 @setup_vertical_rhythm: 20;
 
+
 /* Here you can control the overall font size. Not that this value 
  * strongly correlates with the vertical rhythm. If you make these
  * two values too different your text flow will look ugly
  */
 @setup_font_size: 13;
 
+
 /* ================ SPLIT UP YOUR CODE ================
  * It is highly recommended to split up your various parts
  * of custom styles for your website to improve maintainance 
  */
 
-@import "screen-text.less"; /* everything related to text */
-@import "screen-base.less"; /* the base layout applied to all screen sizes */
-@import "screen-medium.less"; /* the changes applied to medium screen sizes */
-@import "screen-small.less"; /* changes applied to small screen sizes */
+@import "screen-text.less";		/* everything related to text */
+@import "screen-base.less";		/* the base layout applied to all screen sizes */
+@import "screen-medium.less";	/* the changes applied to medium screen sizes */
+@import "screen-small.less";	/* changes applied to small screen sizes */

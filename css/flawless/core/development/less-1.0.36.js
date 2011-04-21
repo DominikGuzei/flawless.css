@@ -160,13 +160,13 @@ if (typeof(window) === 'undefined') {
 //      the index of the current chunk in relation to `input`.
 //      This gives us an almost 4x speed-up.
 //
-//    - In many cases, we don't need to match individual tokens;
+//    - In many cases, we don’t need to match individual tokens;
 //      for example, if a value doesn't hold any variables, operations
 //      or dynamic references, the parser can effectively 'skip' it,
 //      treating it as a literal.
 //      An example would be '1px solid #000' - which evaluates to itself,
-//      we don't need to know what the individual components are.
-//      The drawback, of course is that you don't get the benefits of
+//      we don’t need to know what the individual components are.
+//      The drawback, of course is that you don’t get the benefits of
 //      syntax-checking on the CSS. This gives us a 50% speed-up in the parser,
 //      and a smaller speed-up in the code-gen.
 //
@@ -291,7 +291,7 @@ less.Parser = function Parser(env) {
         }
     }
 
-    // Same as $(), but don't change the state of the parser,
+    // Same as $(), but don’t change the state of the parser,
     // just return the match.
     function peek(tok) {
         if (typeof(tok) === 'string') {
@@ -482,7 +482,7 @@ less.Parser = function Parser(env) {
             // We try to extract a \n delimited string,
             // showing the line where the parse error occured.
             // We split it up into two parts (the part which parsed,
-            // and the part which didn't), so we can color them differently.
+            // and the part which didn’t), so we can color them differently.
             if (i < input.length - 1) {
                 i = furthest;
                 lines = input.split('\n');
@@ -656,7 +656,7 @@ less.Parser = function Parser(env) {
                 //
                 // Parse url() tokens
                 //
-                // We use a specific rule for urls, because they don't really behave like
+                // We use a specific rule for urls, because they don’t really behave like
                 // standard function calls. The difference is that the argument doesn't have
                 // to be enclosed within a string, so it can't be parsed as an Expression.
                 //
@@ -799,7 +799,7 @@ less.Parser = function Parser(env) {
                 //     }
                 //
                 // Until we have a finer grained state-machine, we have to
-                // do a look-ahead, to make sure we don't have a mixin call.
+                // do a look-ahead, to make sure we don’t have a mixin call.
                 // See the `rule` function for more information.
                 //
                 // We start by matching `.rounded (`, and then proceed on to
@@ -858,9 +858,9 @@ less.Parser = function Parser(env) {
             },
 
             //
-            // A Rule terminator. Note that we use `peek()` to check for '}',
+            // A rule terminator. Note that we use `peek()` to check for '}',
             // because the `block` rule will be expecting it, but we still need to make sure
-            // it's there, if ';' was ommitted.
+            // it’s there, if ';' was ommitted.
             //
             end: function () {
                 return $(';') || peek('}');
@@ -907,8 +907,8 @@ less.Parser = function Parser(env) {
             //
             // Because our parser isn't white-space sensitive, special care
             // has to be taken, when parsing the descendant combinator, ` `,
-            // as it's an empty space. We have to check the previous character
-            // in the input, to see if it's a ` ` character. More info on how
+            // as it’s an empty space. We have to check the previous character
+            // in the input, to see if it’s a ` ` character. More info on how
             // we deal with this in *combinator.js*.
             //
             combinator: function () {
@@ -970,7 +970,7 @@ less.Parser = function Parser(env) {
 
             //
             // The `block` rule is used by `ruleset` and `mixin.definition`.
-            // It's a wrapper around the `primary` rule, with added `{}`.
+            // It’s a wrapper around the `primary` rule, with added `{}`.
             //
             block: function () {
                 var content;
@@ -1038,8 +1038,8 @@ less.Parser = function Parser(env) {
             //     @import "lib";
             //
             // Depending on our environemnt, importing is done differently:
-            // In the browser, it's an XHR request, in Node, it would be a
-            // file-system operation. The function used for importing is
+            // In the browser, it’s an XHR request; in Node, it would be a
+            // filesystem operation. The function used for importing is
             // stored in `import`, which we pass to the Import constructor.
             //
             "import": function () {
@@ -1620,7 +1620,7 @@ tree.Expression.prototype = {
 //
 // CSS @import node
 //
-// The general strategy here is that we don't want to wait
+// The general strategy here is that we don’t want to wait
 // for the parsing to be completed, before we start importing
 // the file. That's because in the context of a browser,
 // most of the time will be spent waiting for the server to respond.
@@ -1656,7 +1656,7 @@ tree.Import = function (path, imports) {
 
 //
 // The actual import node doesn't return anything, when converted to CSS.
-// The reason is that it's used at the evaluation stage, so that the rules
+// The reason is that it’s used at the evaluation stage, so that the rules
 // it imports can be treated like any other rules.
 //
 // In `eval`, we make sure all Import nodes get evaluated, recursively, so
@@ -2078,7 +2078,7 @@ tree.Ruleset.prototype = {
 
         rulesets = rulesets.join('');
 
-        // If this is the root node, we don't render
+        // If this is the root node, we don’t render
         // a selector, or {}.
         // Otherwise, only output if this ruleset has rules.
         if (this.root) {
@@ -2356,7 +2356,7 @@ function loadStyleSheet(sheet, callback, reload, remaining) {
     var timestamp = cache && cache.getItem(href + ':timestamp');
     var styles    = { css: css, timestamp: timestamp };
 
-    // Stylesheets in IE don't always return the full path
+    // Stylesheets in IE don’t always return the full path
     if (! /^(https?|file):/.test(href)) {
         href = url.slice(0, url.lastIndexOf('/') + 1) + href;
     }
@@ -2442,7 +2442,7 @@ function createCSS(styles, sheet, lastModified) {
         })(document.createTextNode(styles));
     }
 
-    // Don't update the local store if the file wasn't modified
+    // don’t update the local store if the file wasn't modified
     if (lastModified && cache) {
         log('saving ' + href + ' to cache.');
         cache.setItem(href, styles);

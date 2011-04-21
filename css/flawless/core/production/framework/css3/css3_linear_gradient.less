@@ -1,3 +1,7 @@
+/**
+ *	@FIXME
+ *	[ insert description here! ]
+ */
 .css3_linear_gradient(@start_color: #ccc, @end_color: #eee, @start: center top, @degree: -90deg, @end: center bottom) {
   background: -moz-linear-gradient(@start @degree, @start_color, @end_color); 
   background: -webkit-gradient(linear, @start, @end, color-stop(0, @start_color), color-stop(1, @end_color));
@@ -5,5 +9,3 @@
   -pie-background: linear-gradient(@degree, @start_color, @end_color);
   behavior: e(%("url(%s/framework/css3/PIE.htc)", @setup_framework_path));
 }
-
-

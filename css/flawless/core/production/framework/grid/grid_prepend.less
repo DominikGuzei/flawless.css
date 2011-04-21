@@ -1,14 +1,18 @@
 /**
- *  .prependWidth - MIXIN
- *  See: .prependWidth
- *  adds the with of @number cells to the right margin
- *  and thus moves the element to the left side
+ *  .grid_prepend() - MIXIN
+ *  @see	.prependWidth()
+ *  Increases the margin-left by a width equaling @number cells.  
+ *	Note that this moves the element to the right!
  */
-
 .grid_prepend(@count) {
   .grid_columns_margin_left(@count, @grid_width, @grid_columns);
 }
 
+
+/**
+ *	@FIXME
+ *	[ insert description here! ]
+ */
 .grid_unprepend() {
 	margin-left: 0;
 }

@@ -1,14 +1,16 @@
 /* text.less - All text related styles here */
 
-/* The Flawless Reset is the most advanced reset mixin. You can also
- * choose eric meyers or yui reset. But if you use html5 like in this
- * example, then the flawless reset is best suited
+/*	The Flaw{LESS} Reset is the preferred reset module. It’s easily 
+ *	swapped for Eric Meyer’s reset or the YUI reset, if you prefer. 
+ *	
+ *	If you use HTML5 (like in the example), then the Flaw{LESS} Reset is best.
  */
-.reset_html5doctor();
+.reset_HTML5doctor();
 
 body {
-	/* This applies the vertical rhythm for the typography in your document */
+	/*	Applies vertical rhythm for the document’s typography	*/
 	.type_rhythm();
-	/* this adds the standard typography theme with custom families and colors */
+	
+	/*	Adds the standard typography theme, with custom families and colors */
 	.type_theme_flawless(@type-family, @type-head-family, #333, #036);
 }

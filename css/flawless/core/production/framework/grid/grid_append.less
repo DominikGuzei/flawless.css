@@ -1,14 +1,20 @@
 /**
- *  .appendWidth - MIXIN
- *  See: .spanWidth
- *  adds the with of @number cells to the right margin
- *  and thus moves the element to the left side
+ *	.grid_append() - MIXIN
+ *  
+ *	@see	.spanWidth()
+ *	
+ *	Increases margin-right by a width equaling @number cells.
+ *	Note that this moves the element to the left!
  */
-
 .grid_append(@count) {
   .grid_columns_margin_right(@count, @grid_width, @grid_columns);
 }
 
+
+/**
+ *	@FIXME
+ *	[ insert description here! ]
+ */
 .grid_unappend() {
 	margin-right: 0;
 }
