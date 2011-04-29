@@ -4,7 +4,7 @@
 @type_externals_width: 16px;
 @type_externals_height: 16px;
 
-/*External Link - adds a little external link icon to all of your external links*/
+//External Link - adds a little external link icon to all of your external links
 .type_external_link(@gap: @type_externals_gap,
 					@path: @type_externals_path,
                     @width: @type_externals_width,
@@ -25,12 +25,12 @@
       cue: e(%('none; } a[href^="http://www.%s"], a[href^="http://%s"] { background-image:none !important; padding-left:0px; margin-left: 0', @domain, @domain));
     }
 
-    /*Use on external links that are images or have background colors/borders...when ever you dont want an icon to appear*/
+    //Use on external links that are images or have background colors/borders...when ever you dont want an icon to appear
     .no-ext {background-image:none !important; padding:0px;}
 
 }
 
-/*Email Links - adds small email icon to all mailto links*/
+//Email Links - adds small email icon to all mailto links
 
 .type_external_email(@gap: @type_externals_gap,
                      @path: @type_externals_path,
@@ -47,7 +47,7 @@
    }
 }
 
-/*AIM Links - adds small IM icon to all aim:goim?screenname=username links*/
+//AIM Links - adds small IM icon to all aim:goim?screenname=username links
 
 .type_external_aim(@gap: @type_externals_gap,
                    @path: @type_externals_path,
@@ -64,7 +64,7 @@
    }
 }
 
-/*PDF Links - adds a small PDF icon to all PDF links*/
+//PDF Links - adds a small PDF icon to all PDF links
 
 .type_external_pdf(@gap: @type_externals_gap,
                    @path: @type_externals_path,
@@ -81,7 +81,7 @@
    }
 }
 
-/*DOC Links - adds a small word doc icon to all word document links*/
+//DOC Links - adds a small word doc icon to all word document links
 
 .type_external_doc(@gap: @type_externals_gap,
                    @path: @type_externals_path,
@@ -98,7 +98,7 @@
    }
 }
 
-/*RSS Links - adds a small Feed icon to all RSS feed links*/
+//RSS Links - adds a small Feed icon to all RSS feed links
 
 .type_external_rss(@gap: @type_externals_gap,
                    @path: @type_externals_path,
@@ -115,7 +115,7 @@
    }
 }
 
-/*RDF Links - adds a small Feed icon to all RDF feed links*/
+//RDF Links - adds a small Feed icon to all RDF feed links
 
 .type_external_rdf(@gap: @type_externals_gap,
                    @path: @type_externals_path,
@@ -132,7 +132,7 @@
    }
 }
 
-/* insert all external link components with one image file */
+// insert all external link components with one image file
 
 .type_externals(@gap: @type_externals_gap,
                 @path: @type_externals_path,

@@ -1,21 +1,19 @@
-/**
- *  .prependWidth - MIXIN
- *  See: .prependWidth
- *  adds the with of @number cells to the right margin
- *  and thus moves the element to the left side
- */
+//
+//  .prependWidth - MIXIN
+//  See: .prependWidth
+//  adds the with of @number cells to the right margin
+//  and thus moves the element to the left side
 
 .grid_shift_left(@count) {
   .grid_columns_right(@count, @grid_width, @grid_columns);
   position:relative;
 }
 
-/**
- *  .prependWidth - MIXIN
- *  See: .prependWidth
- *  adds the with of @number cells to the right margin
- *  and thus moves the element to the left side
- */
+//
+//  .prependWidth - MIXIN
+//  See: .prependWidth
+//  adds the with of @number cells to the right margin
+//  and thus moves the element to the left side
 
 .grid_shift_right(@count) {
   .grid_columns_left(@count, @grid_width, @grid_columns);

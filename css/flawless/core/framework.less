@@ -1,32 +1,32 @@
 @charset "utf-8";
 
-/* basic default values for all modules */
+// basic default values for all modules
 
-/*
- * @setup_framework_path
- * Specifies the path to the framework folder
- * which can be used by modules to include images
- * and other path related elements.
- */
+//
+// @setup_framework_path
+// Specifies the path to the framework folder
+// which can be used by modules to include images
+// and other path related elements.
+
  @setup_framework_path: "css/flawless/core";
 
-/*
- * @setup_vertical_rhythm
- * specifies the height of each row in the grid
- * "as pixel value". This value is used to calculate
- * the relation between text size and row height to
- * achieve a vertical rhythm throughout the document
- */
+//
+// @setup_vertical_rhythm
+// specifies the height of each row in the grid
+// "as pixel value". This value is used to calculate
+// the relation between text size and row height to
+// achieve a vertical rhythm throughout the document
+
  @setup_vertical_rhythm: 18;
 
-/*  @setup_font_size
- *  specifies the basic text size "in pixels", note that
- *  all text sizes are actually applied as % or em. This
- *  value is just a relation to the row height.
- */
+//  @setup_font_size
+//  specifies the basic text size "in pixels", note that
+//  all text sizes are actually applied as % or em. This
+//  value is just a relation to the row height.
+
  @setup_font_size: 12;
 
-/* install framework modules */
+// install framework modules
 @import "util/install.less";
 @import "reset/install.less";
 @import "grid/install.less";

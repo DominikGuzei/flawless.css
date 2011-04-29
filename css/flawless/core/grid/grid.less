@@ -1,36 +1,36 @@
-/**
- *  FLAW{LESS} Css Framework
- *
- *  grid.less
- *  The grid is the core component of the FLAW{LESS} Css Framework
- *  and provides extremely modular mixins that add specific functionality
- *  as needed to your project. This way the core remains as slim as you
- *  need it to, leaving all overhead aside.
- *
- *  @author: Dominik Guzei
- *  @website: wizzart.at
- *
- *  MIT-License: http://www.opensource.org/licenses/mit-license.php
- */
+//
+//  FLAW{LESS} Css Framework
+//
+//  grid.less
+//  The grid is the core component of the FLAW{LESS} Css Framework
+//  and provides extremely modular mixins that add specific functionality
+//  as needed to your project. This way the core remains as slim as you
+//  need it to, leaving all overhead aside.
+//
+//  @author: Dominik Guzei
+//  @website: wizzart.at
+//
+//  MIT-License: http://www.opensource.org/licenses/mit-license.php
 
-/**
- *  .grid - MIXIN
- *  The core function of the grid module, that builds up
- *  the basic structure and provides you with up to 24
- *  columns with custom gap, min-width and max-width
- *
- *  it's also the setup function for all other grid
- *  modules. So you can define most presets in one
- *  mixin call.
- *
- *  @width   - defines the width of the grid in (any css unit)
- *  @columns - specifies the number of columns in the grid
- *             up to 24 columns are possible. (plane number)
- *  @gap     - The gap between elements in the grid (any css unit)
- *  @min     - minimal width of the grid (any css unit)
- *  @max     - maximal width of the grid (any css unit)
- *  @align   - align the grid on left / center / right side of parent
- */
+
+//
+//  .grid - MIXIN
+//  The core function of the grid module, that builds up
+//  the basic structure and provides you with up to 24
+//  columns with custom gap, min-width and max-width
+//
+//  it's also the setup function for all other grid
+//  modules. So you can define most presets in one
+//  mixin call.
+//
+//  @width   - defines the width of the grid in (any css unit)
+//  @columns - specifies the number of columns in the grid
+//             up to 24 columns are possible. (plane number)
+//  @gap     - The gap between elements in the grid (any css unit)
+//  @min     - minimal width of the grid (any css unit)
+//  @max     - maximal width of the grid (any css unit)
+//  @align   - align the grid on left / center / right side of parent
+
 
 .grid_setup(@width: @grid_width,
       @columns: @grid_columns,
@@ -39,8 +39,8 @@
       @min: @grid_min_width,
       @max: @grid_max_width)
 {
-  /* mix the params into the element as variables
-   * so that other modules can take them as defaults */
+  // mix the params into the element as variables
+  // so that other modules can take them as defaults
 
   @grid_width: @width;
   @grid_columns: @columns;
@@ -74,7 +74,7 @@
   margin: 0 auto;
   text-align: left;
 
-  /* CLEARFIX MIXIN */
+  // CLEARFIX MIXIN
   .wrap,
   .in {
     .util_clearfix();
@@ -120,7 +120,7 @@
   	}
 }
 
-/* ie fixes for grid component */
+// ie fixes for grid component
 
 .ie .in {
 	word-wrap: break-word; overflow-x: hidden;
