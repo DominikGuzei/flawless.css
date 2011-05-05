@@ -1,5 +1,5 @@
 //
-// LESS - Leaner CSS v1.0.41
+// LESS - Leaner CSS v1.0.43
 // http://lesscss.org
 // 
 // Copyright (c) 2010, Alexis Sellier
@@ -229,7 +229,7 @@ less.Parser = function Parser(env) {
     // Parse from a token, regexp or string, and move forward if match
     //
     function $(tok) {
-        var match, args, length, c, index, endIndex, k;
+        var match, args, length, c, index, endIndex, k, mem;
 
         //
         // Non-terminal
@@ -327,11 +327,12 @@ less.Parser = function Parser(env) {
             // Split the input into chunks.
             chunks = (function (chunks) {
                 var j = 0,
-                    skip = /[^"'`\{\}\/]+/g,
+                    skip = /[^"'`\{\}\/\(\)]+/g,
                     comment = /\/\*(?:[^*]|\*+[^\/*])*\*+\/|\/\/.*/g,
                     level = 0,
                     match,
                     chunk = chunks[0],
+                    inParam,
                     inString;
 
                 for (var i = 0, c, cc; i < input.length; i++) {
@@ -345,7 +346,7 @@ less.Parser = function Parser(env) {
                     c = input.charAt(i);
                     comment.lastIndex = i;
 
-                    if (!inString && c === '/') {
+                    if (!inString && !inParam && c === '/') {
                         cc = input.charAt(i + 1);
                         if (cc === '/' || cc === '*') {
                             if (match = comment.exec(input)) {
@@ -358,11 +359,17 @@ less.Parser = function Parser(env) {
                         }
                     }
 
-                    if        (c === '{' && !inString) { level ++;
+                    if        (c === '{' && !inString && !inParam) { level ++;
                         chunk.push(c);
-                    } else if (c === '}' && !inString) { level --;
+                    } else if (c === '}' && !inString && !inParam) { level --;
                         chunk.push(c);
                         chunks[++j] = chunk = [];
+                    } else if (c === '(' && !inString && !inParam) {
+                        chunk.push(c);
+                        inParam = true;
+                    } else if (c === ')' && !inString && inParam) {
+                        chunk.push(c);
+                        inParam = false;
                     } else {
                         if (c === '"' || c === "'" || c === '`') {
                             if (! inString) {
@@ -485,6 +492,7 @@ less.Parser = function Parser(env) {
                 error = {
                     name: "ParseError",
                     message: "Syntax Error on line " + line,
+                    index: i,
                     filename: env.filename,
                     line: line,
                     column: column,
@@ -620,9 +628,11 @@ less.Parser = function Parser(env) {
                     name = name[1].toLowerCase();
 
                     if (name === 'url') { return null }
-                    else                { i += name.length + 1 }
+                    else                { i += name.length }
 
                     if (name === 'alpha') { return $(this.alpha) }
+
+                    $('('); // Parse the '(' and consume whitespace.
 
                     args = $(this.entities.arguments);
 
@@ -861,7 +871,8 @@ less.Parser = function Parser(env) {
             //
             entity: function () {
                 return $(this.entities.literal) || $(this.entities.variable) || $(this.entities.url) ||
-                       $(this.entities.call)    || $(this.entities.keyword)  || $(this.entities.javascript);
+                       $(this.entities.call)    || $(this.entities.keyword)  || $(this.entities.javascript) ||
+                       $(this.comment);
             },
 
             //
@@ -901,7 +912,7 @@ less.Parser = function Parser(env) {
             // and an element name, such as a tag a class, or `*`.
             //
             element: function () {
-                var e, t;
+                var e, t, c;
 
                 c = $(this.combinator);
                 e = $(/^(?:[.#]?|:*)(?:[\w-]|\\(?:[a-fA-F0-9]{1,6} ?|[^a-fA-F0-9]))+/) || $('*') || $(this.attribute) || $(/^\([^)@]+\)/);
@@ -1000,9 +1011,10 @@ less.Parser = function Parser(env) {
                 } else {
                     while (s = $(this.selector)) {
                         selectors.push(s);
+                        $(this.comment);
                         if (! $(',')) { break }
+                        $(this.comment);
                     }
-                    if (s) $(this.comment);
                 }
 
                 if (selectors.length > 0 && (rules = $(this.block))) {
@@ -1014,7 +1026,7 @@ less.Parser = function Parser(env) {
                 }
             },
             rule: function () {
-                var name, value, c = input.charAt(i), important;
+                var name, value, c = input.charAt(i), important, match;
                 save();
 
                 if (c === '.' || c === '#' || c === '&') { return }
@@ -1070,7 +1082,7 @@ less.Parser = function Parser(env) {
 
                 if (value = $(this['import'])) {
                     return value;
-                } else if (name = $(/^@media|@page/)) {
+                } else if (name = $(/^@media|@page|@-[-a-z]+/)) {
                     types = ($(/^[^{]+/) || '').trim();
                     if (rules = $(this.block)) {
                         return new(tree.Directive)(name + " " + types, rules);
@@ -1493,7 +1505,7 @@ tree.Color.prototype = {
         for (var c = 0; c < 3; c++) {
             result[c] = tree.operate(op, this.rgb[c], other.rgb[c]);
         }
-        return new(tree.Color)(result);
+        return new(tree.Color)(result, this.alpha + other.alpha);
     },
 
     toHSL: function () {
@@ -1855,6 +1867,8 @@ tree.mixin.Definition.prototype = {
                 }
             }
         }
+        frame.rules.unshift(new(tree.Rule)('@arguments', new(tree.Expression)(args)));
+
         return new(tree.Ruleset)(null, this.rules.slice(0)).eval({
             frames: [this, frame].concat(this.frames, env.frames)
         });
@@ -2323,7 +2337,8 @@ for (var i = 0; i < links.length; i++) {
 
 
 less.refresh = function (reload) {
-    var startTime = endTime = new(Date);
+    var startTime, endTime;
+    startTime = endTime = new(Date);
 
     loadStyleSheets(function (root, sheet, env) {
         if (env.local) {

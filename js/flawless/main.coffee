@@ -16,7 +16,7 @@ require
 , [
   'flawless/css'
   'libs/jquery-1.5.2.min'
-  'libs/less-1.0.41.min'
+  'libs/less-1.0.43.min'
 ], (css) ->
   # Append the development stylesheet here instead of loading via markup in
   # index.html to mimimize differences for development vs production
