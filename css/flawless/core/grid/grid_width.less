@@ -14,33 +14,33 @@
   @n: @count;
   @w: @width;
   @c: @columns;
-  width: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+  width: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d+/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
 }
 
 .grid_columns_margin_left(@count, @width, @columns) {
   @n: @count;
   @w: @width;
   @c: @columns;
-  margin-left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+  margin-left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d+/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
 }
 
 .grid_columns_margin_right(@count, @width, @columns) {
   @n: @count;
   @w: @width;
   @c: @columns;
-  margin-right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+  margin-right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d+/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
 }
 
 .grid_columns_left(@count, @width, @columns) {
   @n: @count;
   @w: @width;
   @c: @columns;
-  left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+  left: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d+/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
 }
 
 .grid_columns_right(@count, @width, @columns) {
   @n: @count;
   @w: @width;
   @c: @columns;
-  right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
+  right: e(`(/\d(em|%)/.test(this.w.toJS())) ? (100 / this.c.toJS() * this.n.toJS()) + '%' : ((this.w.toJS().match(/\d+/) / this.c.toJS()) * this.n.toJS()) + (this.w.toJS().match(/(mm|cm|in|pt|pc|px)/) || ['']).pop()`);
 }
