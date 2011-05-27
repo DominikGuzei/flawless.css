@@ -1,5 +1,5 @@
 //
-// LESS - Leaner CSS v1.1.0
+// LESS - Leaner CSS v1.1.2
 // http://lesscss.org
 // 
 // Copyright (c) 2009-2011, Alexis Sellier
@@ -1691,8 +1691,10 @@ tree.Expression.prototype = {
             return new(tree.Expression)(this.value.map(function (e) {
                 return e.eval(env);
             }));
-        } else {
+        } else if (this.value.length === 1) {
             return this.value[0].eval(env);
+        } else {
+            return this;
         }
     },
     toCSS: function (env) {
@@ -1788,22 +1790,21 @@ tree.JavaScript = function (string, index, escaped) {
     this.index = index;
 };
 tree.JavaScript.prototype = {
-    toCSS: function () {
-        if (this.escaped) {
-            return this.evaluated;
-        } else {
-            return JSON.stringify(this.evaluated);
-        }
-    },
     eval: function (env) {
         var result,
+            that = this,
             context = {};
 
         var expression = this.expression.replace(/@\{([\w-]+)\}/g, function (_, name) {
-            return new(tree.Variable)('@' + name).eval(env).value;
+            return tree.jsify(new(tree.Variable)('@' + name, that.index).eval(env));
         });
 
-        expression = new(Function)('return (' + expression + ')');
+        try {
+            expression = new(Function)('return (' + expression + ')');
+        } catch (e) {
+            throw { message: "JavaScript evaluation error: `" + expression + "`" ,
+                    index: this.index };
+        }
 
         for (var k in env.frames[0].variables()) {
             context[k.slice(1)] = {
@@ -1815,12 +1816,18 @@ tree.JavaScript.prototype = {
         }
 
         try {
-            this.evaluated = expression.call(context);
+            result = expression.call(context);
         } catch (e) {
             throw { message: "JavaScript evaluation error: '" + e.name + ': ' + e.message + "'" ,
                     index: this.index };
         }
-        return this;
+        if (typeof(result) === 'string') {
+            return new(tree.Quoted)('"' + result + '"', result, this.escaped, this.index);
+        } else if (Array.isArray(result)) {
+            return new(tree.Anonymous)(result.join(', '));
+        } else {
+            return new(tree.Anonymous)(result);
+        }
     }
 };
 
@@ -1845,12 +1852,13 @@ tree.mixin.Call = function (elements, args, index) {
 };
 tree.mixin.Call.prototype = {
     eval: function (env) {
-        var mixins, rules = [], match = false;
+        var mixins, args, rules = [], match = false;
 
         for (var i = 0; i < env.frames.length; i++) {
             if ((mixins = env.frames[i].find(this.selector)).length > 0) {
+                args = this.arguments && this.arguments.map(function (a) { return a.eval(env) });
                 for (var m = 0; m < mixins.length; m++) {
-                    if (mixins[m].match(this.arguments, env)) {
+                    if (mixins[m].match(args, env)) {
                         try {
                             Array.prototype.push.apply(
                                   rules, mixins[m].eval(env, this.arguments).rules);
@@ -1914,7 +1922,7 @@ tree.mixin.Definition.prototype = {
         for (var i = 0; i < Math.max(this.params.length, args && args.length); i++) {
             _arguments.push(args[i] || this.params[i].value);
         }
-        frame.rules.unshift(new(tree.Rule)('@arguments', new(tree.Expression)(_arguments)));
+        frame.rules.unshift(new(tree.Rule)('@arguments', new(tree.Expression)(_arguments).eval(env)));
 
         return new(tree.Ruleset)(null, this.rules.slice(0)).eval({
             frames: [this, frame].concat(this.frames, env.frames)
@@ -1989,12 +1997,14 @@ tree.Quoted.prototype = {
         }
     },
     eval: function (env) {
-        this.value = this.value.replace(/@\{([\w-]+)\}/g, function (_, name) {
-            return new(tree.Variable)('@' + name).eval(env).value;
-        }).replace(/`([^`]+)`/g, function (_, exp) {
-            return new(tree.JavaScript)(exp, this.index, true).eval(env).toCSS();
+        var that = this;
+        var value = this.value.replace(/`([^`]+)`/g, function (_, exp) {
+            return new(tree.JavaScript)(exp, that.index, true).eval(env).value;
+        }).replace(/@\{([\w-]+)\}/g, function (_, name) {
+            var v = new(tree.Variable)('@' + name, that.index).eval(env);
+            return v.value || v.toCSS();
         });
-        return this;
+        return new(tree.Quoted)(this.quote + value + this.quote, value, this.escaped, this.index);
     }
 };
 
@@ -2322,6 +2332,13 @@ require('less/tree').find = function (obj, fun) {
         if (r = fun.call(obj, obj[i])) { return r }
     }
     return null;
+};
+require('less/tree').jsify = function (obj) {
+    if (Array.isArray(obj.value) && (obj.value.length > 1)) {
+        return '[' + obj.value.map(function (v) { return v.toCSS(false) }).join(', ') + ']';
+    } else {
+        return obj.toCSS(false);
+    }
 };
 //
 // browser.js - client-side engine
