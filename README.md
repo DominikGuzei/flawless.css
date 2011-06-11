@@ -62,7 +62,7 @@ You start with **0 KB**, and simply add only what your website needs. **A basic
 
 How can I use this?
 -----
-Download the complete package here and look at the **index.html** and **css/style.less** files. There's plenty of inline documentation to get you started. 
+Download the complete package and look at `index.html` and `css/style.less`. There's plenty of inline documentation to get you started. 
 
 To fully understand how the framework works, you should also take a look at [LESS](http://lesscss.org) and [LESS.JS](http://github.com/cloudhead/less.js)
 
@@ -97,7 +97,7 @@ Now, let’s define some markup for the grid:
     </body>
 ```
 
-This is the markup we could use for a basic two column layout with header and footer. We don’t have to put any classes about the layout or design here. This is pure semantics, okay?
+This is the markup we could use for a basic two column layout with header and footer. We don’t have to put any classes about the layout or design here. This is pure semantics, and it’s beautiful.
 
 Here’s the CSS needed to build the complete grid:
 
@@ -159,11 +159,13 @@ Look at this:
 	}
 ```
 
-This is the way you decide how your columns change in response to the screen size. See how simple that is? These rules just apply to the layout on screen sizes between 480px and 767px. And we said: “If the screen is that small, change the width of my columns so that they both span the full width.” This results in a one column layout that’s perfect for small devices or screen sizes!
+This is the way you decide how your columns change in response to the screen size. See how simple that is? These rules just apply to the layout on screen sizes between 480px–767px. And we said: “If the screen is that small, change the width of my columns so that they both span the full width.” This results in a one column layout that’s perfect for small devices or screen sizes!
 
 Okay, that’s nice…but I want *real* CSS on my server!
 ----
-Please just add **#compress** at the end of the URL in your development browser and reload the page. This will give you an textbox at the end of your page where you will find the complete CSS code, compressed and optimized for production. Copy this into a “normal” CSS file and link it in your HTML. You have finished your first development cycle!
+Please just add **#compress** at the end of the URL in your development browser and reload the page. This will give you an textbox at the end of your page where you will find the complete CSS code, compressed and optimized for production. Copy this into a “normal” CSS file and link it in your HTML. 
+
+You’ve just finished your first development cycle.
 
 The first CSS framework with real ADDONS
 ----
@@ -173,11 +175,11 @@ The best thing about Flaw{LESS} CSS Framework is its modular system. Each core m
 
 It’s really easy:
 
- - Create **first_module.less** inside /addons
- - Open "install.less" (also in /addons)
- - Add `@import "first_module.less";` at the end of the install.less
+ - Create `first_module.less` under `/addons`
+ - Open `/addons/install.less`
+ - Add `@import "first_module.less";` at the end of the `install.less`
 
-You’ve just installed your first Flaw{LESS} module!
+You’ve just installed your first Flaw{LESS} module. :)
 
 Visions for the Future
 ----
