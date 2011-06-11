@@ -29,7 +29,7 @@ Yes you can use **CSS3 today even in IE6**—the integrated [PIE script](http://
 ```
 
 ### Go Cutting Edge with HTML5 today!
-**Completely based on [HTML5 Boilerplate](http://html5boilerplate.com)** to provide the most professional starting point available for HTML5 today together with other great projects like [Modernizr](http://www.modernizr.com) which are included! This way you can write HTML5 today in all browsers!
+**Completely based on [HTML5 Boilerplate](http://html5boilerplate.com) ** to provide the most professional starting point available for HTML5 today together with other great projects like [Modernizr](http://www.modernizr.com) which are included! This way you can write HTML5 today in all browsers!
 
 ### Media Queries and Responsive Designs
 Modern browsers and most mobile versions understand media queries, so you can take advance of **responsive design** that changes appearance according to smaller screen sizes! Things like [Less Framework](http://lessframework.com) are trivially easy to achieve! 
@@ -123,7 +123,7 @@ Here’s the CSS needed to build the complete grid:
      }
 ```
 
-The best part about this is that **you're not locked into any rules** from the framework. You can change the complete layout any time!  Just change a few arguments in `.grid_setup()` or adjust element sizes by changing how many columns they span.
+The best part about this is that **you’re not locked into any rules** from the framework. You can change the complete layout any time!  Just change a few arguments in `.grid_setup()` or adjust element sizes by changing how many columns they span.
 
 Cutting Edge Webdesign
 ----
@@ -163,13 +163,13 @@ This is the way you decide how your columns change in response to the screen siz
 
 Okay, that’s nice…but I want *real* CSS on my server!
 ----
-Please just add **#compress** at the end of the URL in your development browser and reload the page. This will give you an textbox at the end of your page where you will find the complete CSS code, compressed and optimized for production. Copy this into a “normal” CSS file and link it in your HTML. 
+Just add `#compress` to the end of the URL in your development browser and reload the page. This will give you an `&lt;textbox&gt;` at the end of the page with the complete CSS code, compressed and optimized for production. Copy this into a “normal” CSS file and link it in your HTML. 
 
 You’ve just finished your first development cycle.
 
 The first CSS framework with real ADDONS
 ----
-The best thing about Flaw{LESS} CSS Framework is its modular system. Each core module is located in the “core” subfolder where you can find all components that make up the modules. Components are files that add small functionality to the big picture and together they form great systems like the grid.
+The best thing about Flaw{LESS} is its modularity. Each core module is located in the `/core` subfolder where you can find all components that make up the modules. Components are files that add small functionality to the big picture and together they form great systems like the grid.
 
 ### Want to make your own module?
 
@@ -184,7 +184,7 @@ You’ve just installed your first Flaw{LESS} module. :)
 Visions for the Future
 ----
 
-If anyone is interested in collaborating: I’m planing a website (ala jQuery’s) where people can upload custom modules along with some docs or advice. I think this could become **the** next big movement toward pleasant webdesign, just as jQuery opened up Javascript to new audiences.
+If anyone is interested in collaborating: I’m planing a website (ala jQuery’s) for people to upload custom modules along with some docs and advice. I think this could become **the** next big movement toward pleasant webdesign (much like jQuery opened up Javascript to new audiences).
 
 And of course, I’d love to see you in the team for making the framework better!
 
