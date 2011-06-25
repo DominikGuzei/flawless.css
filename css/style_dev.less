@@ -1,12 +1,12 @@
 /** 
- *  FLAW{LESS} Css Framework 
+ *  FLAW{LESS} CSS Framework 
  *
  *  Starter Page
  *  This is an example page that shows many of the possibilities
- *	you have by using the FLAW{LESS} Css Framework. The base layout
+ *	you have by using the FLAW{LESS} CSS Framework. The base layout
  *	is divided into 8 columns (in this example) for all devices.
- *	Through media queries the columns change position and width
- *	if viewed with smaller screen sizes.
+ *	Through media queries, the columns change position and width
+ *	when viewed on smaller screen sizes.
  *  
  *  @author: Dominik Guzei
  *  @website: wizzart.at
@@ -16,9 +16,10 @@
 
 /* Here we import the framework. Note that this does not
  * add any styles yet. We are using the less.js framework
- * which adds variables and mixins (behave like function calls)
- * This way the framework can provide infinite features, without
- * adding anything more than you need on your website.
+ * which adds variables and mixins (sort of like function calls).
+ *
+ * In this way, the framework provides countless features without
+ * forcing any more than you need on your website.
  */
 @import "flawless/loader.less";
 
@@ -26,32 +27,32 @@
  * Here you can see the basic three setup variables that most
  * websites will need to set in order to use the framework.
  *
- * it is also important to set up those vars here so that all
- * imported .less files you create build upon this foundation
+ * It is also important to set up these three vars here, so any
+ * imported .less files you create build on this foundation.
  */
  
-/* Tell the framework where it is relative to the html file  */
+/* Tell the framework where it is relative to the HTML file  */
 @setup_framework_path: "css/flawless/core/production";
 
 /* The vertical rhythm is used to give your webpages a consistent
  * look. The whole grid system relies on this value to calculate
- * gaps, spans and so on. Basically this defines the row-height of
+ * gaps, spans, and so on. Basically, this defines the row-height of
  * the grid in pixels and aligns all elements in the flow of the grid. 
  */
 @setup_vertical_rhythm: 20;
 
 /* Here you can control the overall font size. Not that this value 
  * strongly correlates with the vertical rhythm. If you make these
- * two values too different your text flow will look ugly
+ * two values too different, your text flow will look ugly.
  */
 @setup_font_size: 13;
 
 /* ================ SPLIT UP YOUR CODE ================
  * It is highly recommended to split up your various parts
- * of custom styles for your website to improve maintainance 
+ * of custom styles for your website to improve maintainance.
  */
 
-@import "screen-text.less"; /* everything related to text */
-@import "screen-base.less"; /* the base layout applied to all screen sizes */
-@import "screen-medium.less"; /* the changes applied to medium screen sizes */
-@import "screen-small.less"; /* changes applied to small screen sizes */
+@import "screen-text.less";     /* everything related to text */
+@import "screen-base.less";     /* the base layout applied to all screen sizes */
+@import "screen-medium.less";   /* the changes applied to medium screen sizes */
+@import "screen-small.less";    /* changes applied to small screen sizes */
